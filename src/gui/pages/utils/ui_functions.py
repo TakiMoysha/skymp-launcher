@@ -5,8 +5,9 @@ STATE = 0
 
 class UIFunctions(MainWindow):
     def removeDefaultTitleBar(self):
-        self.setWindowFlog(Qt.FramelessWindowHint)
+        self.setWindowFlag(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
 
-    def maximize_window(self):
-        pass
+    def maximizeWindow(self):
+        global STATE
+        status = STATE

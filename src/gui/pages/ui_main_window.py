@@ -106,7 +106,7 @@ class UI_MainWindow(object):
         self.content_layout.setSpacing(0)
 
         # TOP BAR
-        self.top_bar = QFrame()
+        self.top_bar = QWidget()
         self.top_bar.setMinimumHeight(30)
         self.top_bar.setMaximumHeight(30)
         self.top_bar.setStyleSheet("color: rgb(195, 204, 223); background-color: rgb(30, 48, 98)")
@@ -117,13 +117,13 @@ class UI_MainWindow(object):
         self.top_label_left = QLabel("SkyMP Launcer")
 
         self.top_spacer = QSpacerItem(
-            1000,
+            100,
             20,
-            QSizePolicy.Minimum,
+            QSizePolicy.Maximum,
             QSizePolicy.Minimum
         )
 
-        self.top_label_right = QStackedWidget()
+        self.top_label_right = QHBoxLayout(self.top_bar)
         self.ui_top_label_right = SysButtons()
         self.ui_top_label_right.setupUi(self.top_label_right)
         # self.top_label_right = QLabel("| RED HOUSE FORTRESS")
@@ -131,7 +131,7 @@ class UI_MainWindow(object):
 
         self.top_bar_layout.addWidget(self.top_label_left)
         self.top_bar_layout.addItem(self.top_spacer)
-        self.top_bar_layout.addWidget(self.top_label_right)
+        self.top_bar_layout.addLayout(self.top_label_right)
 
         # BOTTOM BAR
         self.bottom_bar = QFrame()
