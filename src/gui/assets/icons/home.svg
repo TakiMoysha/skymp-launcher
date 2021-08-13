@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="18"
+   height="18"
+   viewBox="0 0 4.7624999 4.7625001"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="home.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="16"
+     inkscape:cx="11.46875"
+     inkscape:cy="9.28125"
+     inkscape:window-width="1587"
+     inkscape:window-height="1041"
+     inkscape:window-x="123"
+     inkscape:window-y="49"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1-3"
+     units="px"
+     objecttolerance="20"
+     showborder="true"
+     borderlayer="false"
+     inkscape:showpageshadow="true" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Слой 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       transform="matrix(0.01033883,0,0,0.0110457,-0.43774616,-3.05237)"
+       id="layer1-3">
+      <g
+         id="g41"
+         transform="matrix(0.99300276,0,0,0.98241724,-155.88057,-547.63712)">
+        <path
+           d="m 594.42734,1061.8243 z m 0,0 -162.82,-144.18998 -162.9,144.24998 v 206.12 c 0,5.33 4.3,9.6 9.62,9.6 h 101.81 v -90.38 c 0,-5.32 4.27,-9.62 9.6,-9.62 h 83.65 c 5.33,0 9.6,4.3 9.6,9.62 v 90.38 h 101.84 c 5.32,0 9.6,-4.27 9.6,-9.6 z m -325.72,0.06 z"
+           id="rect2391" />
+        <path
+           d="m 430.66734,838.72432 -231.05,204.58998 24.338,27.45 207.65,-183.87998 207.61,183.87998 24.29,-27.45 -231,-204.58998 -0.9,1.04 -0.94,-1.04 z"
+           id="path2399" />
+        <path
+           d="m 268.70734,868.17432 h 58.57 l -0.51,34.69 -58.06,52.45 z"
+           id="rect2404" />
+      </g>
+    </g>
+  </g>
+</svg>
