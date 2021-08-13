@@ -32,21 +32,21 @@ class MainWindow(QMainWindow):
             lambda: self.close()
         )
 
-        UIFunctions.remove_default_title_bar(self)
+        def mouseMoveEvent(event):
+            if (event.buttons() == Qt.LeftButton):
+                self.move(self.pos() + event.globalPos() - self.dragPos)
+                self.dragPos = event.globalPos()
+                event.accept()
+
+        self.ui.top_bar.mouseMoveEvent = mouseMoveEvent
+
+        UIFunctions.removeDefaultTitleBar(self)
 
         self.show()
-        print("Create")
 
 
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
-
-
-    def mouseMoveEvent(self, event):
-        if event.buttons() == Qt.LeftButton:
-            self.move(self.pos() + event.globalPos() - self.dragPos)
-            self.dragPos = event.globalPos()
-            event.accept()
 
 
     def toggleButton(self):
