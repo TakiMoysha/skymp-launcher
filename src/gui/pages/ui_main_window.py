@@ -126,8 +126,6 @@ class UI_MainWindow(object):
         self.top_label_right = QHBoxLayout(self.top_bar)
         self.ui_top_label_right = SysButtons()
         self.ui_top_label_right.setupUi(self.top_label_right)
-        # self.top_label_right = QLabel("| RED HOUSE FORTRESS")
-        # self.top_label_right.setStyleSheet("font: 700 9pt 'Segoe UI'")
 
         self.top_bar_layout.addWidget(self.top_label_left)
         self.top_bar_layout.addItem(self.top_spacer)
@@ -151,7 +149,7 @@ class UI_MainWindow(object):
             QSizePolicy.Minimum
         )
 
-        self.bottom_label_right = QLabel("@ 2021")
+        self.bottom_label_right = QLabel("| RED HOUSE FORTRESS")
         self.bottom_label_right.setStyleSheet("font: 700 9pt 'Segoe UI'")
 
         self.bottom_bar_layout.addWidget(self.bottom_label_left)

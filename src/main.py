@@ -26,7 +26,7 @@ class MainWindow(QMainWindow):
             lambda: self.showMinimized()
         )
         self.ui.ui_top_label_right.button_maximize.clicked.connect(
-            lambda: self.showMaximized()
+            lambda: UIFunctions.maximizeWindow(self)
         )
         self.ui.ui_top_label_right.button_exit.clicked.connect(
             lambda: self.close()
