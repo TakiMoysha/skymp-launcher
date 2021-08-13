@@ -11,7 +11,7 @@ class UI_MainWindow(object):
         if not parent.objectName():
             parent.setObjectName("MainWindow")
 
-        parent.resize(1200, 700)
+        parent.resize(960, 540)
         parent.setMinimumSize(960, 540)
 
         self.central_frame = QFrame()
@@ -149,12 +149,23 @@ class UI_MainWindow(object):
             QSizePolicy.Minimum
         )
 
-        self.bottom_label_right = QLabel("| RED HOUSE FORTRESS")
+        self.bottom_label_right = QLabel("| RED HOUSE")
         self.bottom_label_right.setStyleSheet("font: 700 9pt 'Segoe UI'")
+
+        self.bottom_right_size_grip = QSizeGrip(self.bottom_bar)
+        self.bottom_right_size_grip.setStyleSheet(u"""
+            QSizeGrip {
+                image: url(src/gui/assets/images/size_grip.png);
+                width: 16px;
+                height: 16px;
+            }
+        """)
 
         self.bottom_bar_layout.addWidget(self.bottom_label_left)
         self.bottom_bar_layout.addItem(self.bottom_spacer)
         self.bottom_bar_layout.addWidget(self.bottom_label_right)
+        self.bottom_bar_layout.addWidget(self.bottom_right_size_grip, 0)
+
 
 
         self.pages = QStackedWidget()
