@@ -5,11 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Run App",
+            "name": "Python: Debug App",
             "type": "python",
             "request": "launch",
-            "program": "./src/main.py",
+            "program": "./main.py",
             "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/src",
             "pythonArgs": [
                 "-B",
             ]
