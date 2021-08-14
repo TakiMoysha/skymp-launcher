@@ -2,6 +2,8 @@ import os
 
 from qt_core import *
 
+from resource_path import resource_path
+
 class PushButton(QPushButton):
     def __init__(
         self,
@@ -108,9 +110,12 @@ class PushButton(QPushButton):
 
     def drawIcon(self, selfPainter, image_name, rect, color):
         app_path = os.path.abspath(os.getcwd())
-        folder = "src/gui/assets/icons"
+        folder = "assets/icons"
         path = os.path.join(app_path, folder)
         icon_path = os.path.normpath(os.path.join(path, image_name))
+        # icon_path = resource_path(os.path.join(folder, image_name))
+        # print(icon_path)
+        # print(resource_path(os.path.join(folder, image_name)))
 
         icon = QPixmap(icon_path)
         painter = QPainter(icon)

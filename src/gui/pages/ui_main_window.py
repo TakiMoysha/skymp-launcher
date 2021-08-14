@@ -5,6 +5,7 @@ from gui.pages.ui_pages import Ui_application_pages
 from gui.pages.widgets.push_button import PushButton
 from gui.pages.widgets.sys_buttons import SysButtons
 from gui.pages.widgets.title_bar_button import TitleBarButton
+from resource_path import resource_path
 
 class UI_MainWindow(object):
     def setup_ui(self, parent):
@@ -15,7 +16,6 @@ class UI_MainWindow(object):
         parent.setMinimumSize(960, 540)
 
         self.central_frame = QFrame()
-        # self.central_frame.setStyleSheet("background-color: rgb(33, 45, 80)")
 
         self.main_layout = QHBoxLayout(self.central_frame)
         self.main_layout.setContentsMargins(0, 0, 0, 0)
@@ -114,7 +114,7 @@ class UI_MainWindow(object):
         self.top_bar_layout = QHBoxLayout(self.top_bar)
         self.top_bar_layout.setContentsMargins(10, 0, 4, 0)
 
-        self.top_label_left = QLabel("SkyMP Launcer")
+        self.top_label_left = QLabel("SkyMP Launcher")
 
         self.top_spacer = QSpacerItem(
             100,
@@ -153,12 +153,12 @@ class UI_MainWindow(object):
         self.bottom_label_right.setStyleSheet("font: 700 9pt 'Segoe UI'")
 
         self.bottom_right_size_grip = QSizeGrip(self.bottom_bar)
-        self.bottom_right_size_grip.setStyleSheet(u"""
-            QSizeGrip {
-                image: url(src/gui/assets/images/size_grip.png);
+        self.bottom_right_size_grip.setStyleSheet(f"""
+            QSizeGrip {{
+                image: url("assets/images/size_grip.png");
                 width: 16px;
                 height: 16px;
-            }
+            }}
         """)
 
         self.bottom_bar_layout.addWidget(self.bottom_label_left)
@@ -180,5 +180,7 @@ class UI_MainWindow(object):
 
         self.main_layout.addWidget(self.left_menu)
         self.main_layout.addWidget(self.content)
+
+
 
         parent.setCentralWidget(self.central_frame)
