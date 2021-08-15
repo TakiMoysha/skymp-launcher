@@ -5,7 +5,7 @@ from gui.pages.ui_pages import Ui_application_pages
 from gui.pages.widgets.push_button import PushButton
 from gui.pages.widgets.sys_buttons import SysButtons
 from gui.pages.widgets.title_bar_button import TitleBarButton
-from resource_path import resource_path
+from utils import resource_path, norm_resource_path
 
 class UI_MainWindow(object):
     def setup_ui(self, parent):
@@ -155,7 +155,7 @@ class UI_MainWindow(object):
         self.bottom_right_size_grip = QSizeGrip(self.bottom_bar)
         self.bottom_right_size_grip.setStyleSheet(f"""
             QSizeGrip {{
-                image: url("assets/images/size_grip.png");
+                image: url("{norm_resource_path("assets/images/size_grip.png")}");
                 width: 16px;
                 height: 16px;
             }}
@@ -165,7 +165,6 @@ class UI_MainWindow(object):
         self.bottom_bar_layout.addItem(self.bottom_spacer)
         self.bottom_bar_layout.addWidget(self.bottom_label_right)
         self.bottom_bar_layout.addWidget(self.bottom_right_size_grip, 0)
-
 
 
         self.pages = QStackedWidget()
