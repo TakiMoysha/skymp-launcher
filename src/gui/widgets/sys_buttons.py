@@ -2,7 +2,7 @@ import os
 
 from qt_core import *
 
-from gui.pages.widgets.title_bar_button import TitleBarButton
+from gui.widgets.title_bar_button import TitleBarButton
 
 class SysButtons(QWidget):
     def setupUi(self, parent):

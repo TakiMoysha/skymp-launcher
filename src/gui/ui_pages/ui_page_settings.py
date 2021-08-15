@@ -10,7 +10,7 @@
 
 from qt_core import *
 
-from gui.pages.widgets.button_with_icon import ButtonWithIcon
+from gui.widgets.button_with_icon import ButtonWithIcon
 
 class UiPageSettings(object):
     def setupUi(self, Frame):

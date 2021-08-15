@@ -10,7 +10,7 @@
 
 from qt_core import *
 
-from gui.pages.ui_pages.ui_page_settings import UiPageSettings
+from gui.ui_pages.ui_page_settings import UiPageSettings
 
 class UiApplicationPages(object):
     def setupUi(self, application_pages):

@@ -5,12 +5,12 @@ import os
 from qt_core import *
 from utils import isPathToSkyrim
 
-from gui.pages.ui_main_window import *
-from gui.pages.utils.ui_functions import *
+from gui.ui_main_window import *
+from gui.utils.ui_functions import *
 
-from gui.pages.utils.dialog import getDirectory
+from gui.utils.dialog import getDirectory
 
-from gui.pages.widgets.notifications_box import NotificationBox
+from gui.widgets.notification_box import NotificationBox
 
 
 

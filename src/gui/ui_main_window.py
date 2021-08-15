@@ -1,9 +1,9 @@
 from qt_core import *
 
-from gui.pages.widgets.push_button import PushButton
-from gui.pages.widgets.sys_buttons import SysButtons
+from gui.widgets.push_button import PushButton
+from gui.widgets.sys_buttons import SysButtons
 
-from gui.pages.ui_pages.ui_pages import UiApplicationPages
+from gui.ui_pages.ui_pages import UiApplicationPages
 
 from utils import norm_resource_path
 

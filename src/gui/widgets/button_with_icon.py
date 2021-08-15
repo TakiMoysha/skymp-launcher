@@ -1,6 +1,6 @@
 import os
 
-from gui.pages.widgets.push_button import PushButton
+from gui.widgets.push_button import PushButton
 from qt_core import *
 
 from utils import resource_path
