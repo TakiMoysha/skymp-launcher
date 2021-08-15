@@ -3,9 +3,16 @@ import sys
 import os
 
 from qt_core import *
+from utils import isPathToSkyrim
 
 from gui.pages.ui_main_window import *
 from gui.pages.utils.ui_functions import *
+
+from gui.pages.utils.dialog import getDirectory
+
+from gui.pages.widgets.notifications_box import NotificationBox
+
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -16,7 +23,7 @@ class MainWindow(QMainWindow):
         self.ui = UI_MainWindow()
         self.ui.setup_ui(self)
 
-        self.ui.toggle_button.clicked.connect(self.toggleButton)
+        self.ui.show_menu_button.clicked.connect(self.showMenu)
 
         self.ui.home_button.clicked.connect(self.showPageHome)
         self.ui.btn_2.clicked.connect(self.showPage2)
@@ -42,6 +49,8 @@ class MainWindow(QMainWindow):
 
         UIFunctions.removeDefaultTitleBar(self)
 
+        self.settingsPageInitButtons()
+
         self.show()
 
 
@@ -49,7 +58,7 @@ class MainWindow(QMainWindow):
         self.dragPos = event.globalPos()
 
 
-    def toggleButton(self):
+    def showMenu(self):
         menu_width = self.ui.left_menu.width()
 
         width = 50
@@ -84,6 +93,22 @@ class MainWindow(QMainWindow):
     def resetSelection(self):
         for btn in self.ui.left_menu.findChildren(PushButton):
             btn.setActive(False)
+
+
+    def settingsPageInitButtons(self):
+        self.ui.ui_pages.ui_page_settings.openSkyrimFolder.clicked.connect(
+            lambda: self.setupSkyrimDir()
+        )
+
+
+    def setupSkyrimDir(self):
+        path_to_skyrim = getDirectory()
+        if isPathToSkyrim(path_to_skyrim):
+            self.ui.ui_pages.ui_page_settings.pathToSkyrimFolder.setText(
+                path_to_skyrim
+            )
+        else:
+            NotificationBox(title = "Launcher says:", text = "Its not valid Skyrim path")
 
 
 if __name__ == '__main__':
