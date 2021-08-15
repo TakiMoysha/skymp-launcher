@@ -1,0 +1,61 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "command": "C:\\Users\\Moyses\\Envs\\pyqt_env\\Scripts\\pyinstaller",
+    "tasks": [
+        {
+            "label": "Debug Build",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "args": [
+                "--onefile",
+                "--add-data",
+                {
+                    "value": "./src/assets/;assets/",
+                    "quoting": "strong"
+                },
+                "--debug=all",
+                {
+                    "value": "./src/main.py",
+                    "quoting": "weak"
+                }
+            ]
+        },
+        {
+            "label": "Production Build",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "args": [
+                "--onefile",
+                "--noconsole",
+                "--add-data",
+                {
+                    "value": "./src/assets/;assets/",
+                    "quoting": "strong"
+                },
+                "--name",
+                {
+                    "value": "SkyMP Luncher",
+                    "quoting": "strong"
+                },
+                "--icon",
+                {
+                    "value": "./src/icon.ico",
+                    "quoting": "weak"
+                },
+                {
+                    "value": "./src/main.py",
+                    "quoting": "weak"
+                }
+
+            ]
+        }
+    ]
+}

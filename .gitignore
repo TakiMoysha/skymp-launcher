@@ -1,5 +1,14 @@
+# Cache
 .qt_for_python
 __pycache__
 
-output
+# Assembly folders
 build
+dist
+
+# Debug files
+*.pyo
+
+# Spec. Assembly is done via tasks vscode
+main.spec
+SkyMP Luncher.spec
