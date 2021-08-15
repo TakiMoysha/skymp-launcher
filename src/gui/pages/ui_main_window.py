@@ -1,11 +1,11 @@
 from qt_core import *
 
-from gui.pages.ui_pages import Ui_application_pages
-
 from gui.pages.widgets.push_button import PushButton
 from gui.pages.widgets.sys_buttons import SysButtons
-from gui.pages.widgets.title_bar_button import TitleBarButton
-from utils import resource_path, norm_resource_path
+
+from gui.pages.ui_pages.ui_pages import UiApplicationPages
+
+from utils import norm_resource_path
 
 class UI_MainWindow(object):
     def setup_ui(self, parent):
@@ -42,7 +42,7 @@ class UI_MainWindow(object):
         self.left_menu_top_layout.setContentsMargins(0, 0, 0, 0)
         self.left_menu_top_layout.setSpacing(0)
 
-        self.toggle_button = PushButton(
+        self.show_menu_button = PushButton(
             text = "Menu",
             icon_name = "menu.svg"
         )
@@ -56,7 +56,7 @@ class UI_MainWindow(object):
             icon_name = "bell.svg"
         )
 
-        self.left_menu_top_layout.addWidget(self.toggle_button)
+        self.left_menu_top_layout.addWidget(self.show_menu_button)
         self.left_menu_top_layout.addWidget(self.home_button)
         self.left_menu_top_layout.addWidget(self.btn_2)
 
@@ -109,7 +109,10 @@ class UI_MainWindow(object):
         self.top_bar = QWidget()
         self.top_bar.setMinimumHeight(30)
         self.top_bar.setMaximumHeight(30)
-        self.top_bar.setStyleSheet("color: rgb(195, 204, 223); background-color: rgb(30, 48, 98)")
+        self.top_bar.setStyleSheet(" \
+            color: rgb(195, 204, 223); \
+            background-color: rgb(30, 48, 98) \
+        ")
 
         self.top_bar_layout = QHBoxLayout(self.top_bar)
         self.top_bar_layout.setContentsMargins(10, 0, 4, 0)
@@ -135,7 +138,10 @@ class UI_MainWindow(object):
         self.bottom_bar = QFrame()
         self.bottom_bar.setMinimumHeight(25)
         self.bottom_bar.setMaximumHeight(25)
-        self.bottom_bar.setStyleSheet("color: rgb(195, 204, 223); background-color: rgb(30, 48, 98)")
+        self.bottom_bar.setStyleSheet(" \
+            color: rgb(195, 204, 223); \
+            background-color: rgb(30, 48, 98); \
+        ")
 
         self.bottom_bar_layout = QHBoxLayout(self.bottom_bar)
         self.bottom_bar_layout.setContentsMargins(8, 0, 8, 0)
@@ -169,7 +175,7 @@ class UI_MainWindow(object):
 
         self.pages = QStackedWidget()
         self.pages.setStyleSheet("font-size: 12pt; color: #f8f8f2;")
-        self.ui_pages = Ui_application_pages()
+        self.ui_pages = UiApplicationPages()
         self.ui_pages.setupUi(self.pages)
 
 

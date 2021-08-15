@@ -10,8 +10,9 @@
 
 from qt_core import *
 
+from gui.pages.ui_pages.ui_page_settings import UiPageSettings
 
-class Ui_application_pages(object):
+class UiApplicationPages(object):
     def setupUi(self, application_pages):
         if not application_pages.objectName():
             application_pages.setObjectName(u"application_pages")
@@ -22,11 +23,11 @@ class Ui_application_pages(object):
         self.verticalLayout = QVBoxLayout(self.page_home)
         self.verticalLayout.setObjectName(u"verticalLayout")
 
-        self.label_1 = QLabel(self.page_home)
-        self.label_1.setObjectName(u"label_1")
-        self.label_1.setAlignment(Qt.AlignCenter)
+        self.home = QLabel(self.page_home)
+        self.home.setObjectName(u"home")
+        self.home.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout.addWidget(self.label_1)
+        self.verticalLayout.addWidget(self.home)
 
         application_pages.addWidget(self.page_home)
 
@@ -42,27 +43,25 @@ class Ui_application_pages(object):
 
         application_pages.addWidget(self.page_2)
 
-        self.page_settings = QWidget()
-        self.page_settings.setObjectName(u"page_settings")
-        self.verticalLayout_3 = QVBoxLayout(self.page_settings)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.label_3 = QLabel(self.page_settings)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_3.addWidget(self.label_3)
+        self.page_settings = QFrame()
+        self.ui_page_settings = UiPageSettings()
+        self.ui_page_settings.setupUi(self.page_settings)
 
         application_pages.addWidget(self.page_settings)
 
         self.retranslateUi(application_pages)
 
         QMetaObject.connectSlotsByName(application_pages)
-    # setupUi
+
 
     def retranslateUi(self, application_pages):
-        application_pages.setWindowTitle(QCoreApplication.translate("application_pages", u"StackedWidget", None))
-        self.label_1.setText(QCoreApplication.translate("application_pages", u"Label 1", None))
+        application_pages.setWindowTitle(
+            QCoreApplication.translate(
+                "application_pages", u"StackedWidget", None
+            )
+        )
+        self.home.setText(QCoreApplication.translate("application_pages", u"Label 1", None))
         self.label_2.setText(QCoreApplication.translate("application_pages", u"Label 2", None))
-        self.label_3.setText(QCoreApplication.translate("application_pages", u"Label 3", None))
-    # retranslateUi
+        # self.page_settings.retranslateUi()
+        # self.settings.setText(QCoreApplication.translate("application_pages", u"Label 3", None))
 
