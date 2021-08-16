@@ -1,27 +1,28 @@
 
 import sys
-import os
 
 from qt_core import *
-from utils import isPathToSkyrim
+from settings import *
 
 from gui.ui_main_window import *
 from gui.utils.ui_functions import *
-
-from gui.utils.dialog import getDirectory
-
+from gui.utils.dialog import getExistingDirectoryByFileDialog
 from gui.widgets.notification_box import NotificationBox
 
+from adapter.path_validate import isPathToSkyrim
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("SkyMP")
+
+        self.setWindowTitle(APPLICATION_NAME)
+        self.settings = Settings()
 
         self.ui = UI_MainWindow()
         self.ui.setup_ui(self)
+
 
         self.ui.show_menu_button.clicked.connect(self.showMenu)
 
@@ -51,6 +52,7 @@ class MainWindow(QMainWindow):
 
         self.settingsPageInitButtons()
 
+        self.loadSettings()
         self.show()
 
 
@@ -102,13 +104,29 @@ class MainWindow(QMainWindow):
 
 
     def setupSkyrimDir(self):
-        path_to_skyrim = getDirectory()
-        if isPathToSkyrim(path_to_skyrim):
+        path_to_skyrim = getExistingDirectoryByFileDialog(
+            self.ui.ui_pages.ui_page_settings.pathToSkyrimFolder.text()
+        )
+        if (path_to_skyrim == ""):
+            pass
+        elif isPathToSkyrim(path_to_skyrim):
             self.ui.ui_pages.ui_page_settings.pathToSkyrimFolder.setText(
                 path_to_skyrim
             )
+            self.settings.saveValue(
+                Settings.SettingsType.skyrim_path,
+                path_to_skyrim
+            )
         else:
-            NotificationBox(title = "Launcher says:", text = "Its not valid Skyrim path")
+            NotificationBox(
+                title = "Launcher says:",
+                text = "Its not valid path to Skyrim"
+            )
+
+    def loadSettings(self):
+        self.ui.ui_pages.ui_page_settings.pathToSkyrimFolder.setText(
+            self.settings.getValue(Settings.SettingsType.skyrim_path, "")
+        )
 
 
 if __name__ == '__main__':
