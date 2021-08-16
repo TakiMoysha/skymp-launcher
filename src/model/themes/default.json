@@ -1,0 +1,11 @@
+{
+    "text": "#C3CCDF",
+    "text_light": "#C3CCDF",
+    "text_description": "#ffffff",
+    "icon": "#0d151b",
+    "background_base": "#1E3062",
+    "background_light": "#36497D",
+    "button": "#1651F5",
+    "button_hover": "#0044ff",
+    "button_press": "#0044ffa6"
+}
