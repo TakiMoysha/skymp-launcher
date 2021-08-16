@@ -15,13 +15,3 @@ def norm_resource_path(relative: str):
     """Call resource_path and replace '\' to  '/'"""
     path = resource_path(relative)
     return path.replace('\\', '/')
-
-
-def isPathToSkyrim(path_to_skyrim: str):
-    path = os.path.join(path_to_skyrim, 'SkyrimSELauncher.exe')
-    return os.path.isfile(path)
-
-
-def skyrimHaveSKSE(path_to_skyrim: str):
-    path = os.path.join(path_to_skyrim, 'skse64_loader.exe')
-    return os.path.isfile(path)

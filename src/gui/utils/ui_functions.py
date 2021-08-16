@@ -3,7 +3,7 @@ from main import *
 
 STATE = 0
 
-class UIFunctions(MainWindow):
+class UIFunctions():
     def removeDefaultTitleBar(self):
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)

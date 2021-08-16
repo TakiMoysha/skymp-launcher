@@ -42,7 +42,6 @@ class UiPageSettings(object):
 
         self.gridLayout.addWidget(self.openSkyrimFolder, 1, 1, 1, 1)
 
-
         self.retranslateUi(Frame)
 
         QMetaObject.connectSlotsByName(Frame)
