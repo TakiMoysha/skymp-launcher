@@ -11,6 +11,7 @@
 from qt_core import *
 
 from gui.ui_pages.ui_page_settings import UiPageSettings
+from gui.ui_pages.ui_page_main import UiPageMain
 
 class UiApplicationPages(object):
     def setupUi(self, application_pages):
@@ -18,16 +19,11 @@ class UiApplicationPages(object):
             application_pages.setObjectName(u"application_pages")
 
         application_pages.resize(640, 480)
+
         self.page_home = QWidget()
         self.page_home.setObjectName(u"page_home")
-        self.verticalLayout = QVBoxLayout(self.page_home)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-
-        self.home = QLabel(self.page_home)
-        self.home.setObjectName(u"home")
-        self.home.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout.addWidget(self.home)
+        self.ui_page_home = UiPageMain()
+        self.ui_page_home.setupUi(self.page_home)
 
         application_pages.addWidget(self.page_home)
 
@@ -60,7 +56,6 @@ class UiApplicationPages(object):
                 "application_pages", u"StackedWidget", None
             )
         )
-        self.home.setText(QCoreApplication.translate("application_pages", u"Label 1", None))
         self.label_2.setText(QCoreApplication.translate("application_pages", u"Label 2", None))
         # self.page_settings.retranslateUi()
         # self.settings.setText(QCoreApplication.translate("application_pages", u"Label 3", None))

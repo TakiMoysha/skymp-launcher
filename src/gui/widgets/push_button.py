@@ -11,13 +11,14 @@ class PushButton(QPushButton):
         height = 40,
         minimum_width = 50,
         text_padding = 55,
-        text_color = "rgb(195, 204, 223);",
+        text_color = "#ffffff",
+        text_font = "9pt 'Segoe UI'",
         icon_name = "",
-        icon_color = "rgb(195, 204, 223);",
-        btn_color = "rgb(54, 73, 125);",
-        btn_hover = "rgb(68, 88, 145);",
-        btn_pressed = "rgb(40, 57, 105);",
-        is_activate = False
+        icon_color = "#0d151b",
+        btn_color = "rgb(54, 73, 125)",
+        btn_hover = "rgb(68, 88, 145)",
+        btn_pressed = "rgb(40, 57, 105)",
+        is_activate = False,
     ):
         super().__init__()
         self.setText(text)

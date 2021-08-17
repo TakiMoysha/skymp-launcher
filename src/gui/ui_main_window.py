@@ -1,7 +1,10 @@
 from qt_core import *
 
+from gui.widgets.background_label import BackgroundLabel
 from gui.widgets.push_button import PushButton
 from gui.widgets.sys_buttons import SysButtons
+
+from ViewModel.theme_manager import ThemeManager
 
 from gui.ui_pages.ui_pages import UiApplicationPages
 
@@ -15,6 +18,8 @@ class UI_MainWindow(object):
         parent.resize(960, 540)
         parent.setMinimumSize(960, 540)
 
+        self.ThemeManager = ThemeManager()
+
         self.central_frame = QFrame()
 
         self.main_layout = QHBoxLayout(self.central_frame)
@@ -23,7 +28,10 @@ class UI_MainWindow(object):
 
         # Left Menu
         self.left_menu = QFrame()
-        self.left_menu.setStyleSheet("background-color: rgb(54, 73, 125)")
+        self.left_menu.setStyleSheet(
+            f"background-color: \
+                {self.ThemeManager.getColor(ThemeManager.Colors.background_light)}"
+        )
         self.left_menu.setMaximumWidth(50)
         self.left_menu.setMinimumWidth(50)
 
@@ -34,9 +42,6 @@ class UI_MainWindow(object):
         self.left_menu_top_frame = QFrame()
         self.left_menu_top_frame.setMinimumHeight(50)
         self.left_menu_top_frame.setObjectName("left_menu_top_frame")
-        self.left_menu_top_frame.setStyleSheet(
-            "#left_menu_top_frame { background-color: red; }"
-        )
 
         self.left_menu_top_layout = QVBoxLayout(self.left_menu_top_frame)
         self.left_menu_top_layout.setContentsMargins(0, 0, 0, 0)
@@ -44,7 +49,7 @@ class UI_MainWindow(object):
 
         self.show_menu_button = PushButton(
             text = "Menu",
-            icon_name = "menu.svg"
+            icon_name = "menu.svg",
         )
         self.home_button = PushButton(
             text = "Home page",
@@ -70,9 +75,6 @@ class UI_MainWindow(object):
         self.left_menu_bottom_frame = QFrame()
         self.left_menu_bottom_frame.setMinimumHeight(50)
         self.left_menu_bottom_frame.setObjectName("left_menu_bottom_frame")
-        self.left_menu_bottom_frame.setStyleSheet(
-            "# left_menu_bottom_frame { background-color: red; }"
-        )
 
         self.left_menu_bottom_layout = QVBoxLayout(self.left_menu_bottom_frame)
         self.left_menu_bottom_layout.setContentsMargins(0, 0, 0, 0)
@@ -85,11 +87,11 @@ class UI_MainWindow(object):
 
         self.left_menu_bottom_layout.addWidget(self.settings_button)
 
-        self.left_menu_label_verion = QLabel("v1.0.0")
-        self.left_menu_label_verion.setAlignment(Qt.AlignCenter)
-        self.left_menu_label_verion.setMinimumHeight(25)
-        self.left_menu_label_verion.setMaximumHeight(25)
-        self.left_menu_label_verion.setStyleSheet("color: rgb(195, 204, 223)")
+        self.left_menu_label_verion = BackgroundLabel(
+            text="v1.0.0",
+            maximum_width=300,
+            alignment=Qt.AlignCenter,
+        )
 
         self.left_menu_layout.addWidget(self.left_menu_top_frame)
         self.left_menu_layout.addItem(self.left_menu_spacer)
@@ -99,7 +101,9 @@ class UI_MainWindow(object):
 
 
         self.content = QFrame()
-        self.content.setStyleSheet("background-color: rgb(33, 45, 80)")
+        self.content.setStyleSheet(f'background-color: \
+            {self.ThemeManager.getColor(ThemeManager.Colors.background)}'
+        )
 
         self.content_layout = QVBoxLayout(self.content)
         self.content_layout.setContentsMargins(0, 0, 0, 0)
@@ -109,9 +113,10 @@ class UI_MainWindow(object):
         self.top_bar = QWidget()
         self.top_bar.setMinimumHeight(30)
         self.top_bar.setMaximumHeight(30)
-        self.top_bar.setStyleSheet(" \
-            color: rgb(195, 204, 223); \
-            background-color: rgb(30, 48, 98) \
+        self.top_bar.setStyleSheet(f" \
+            color: {self.ThemeManager.getColor(ThemeManager.Colors.text)}; \
+            background-color: \
+                {self.ThemeManager.getColor(ThemeManager.Colors.background_dark)} \
         ")
 
         self.top_bar_layout = QHBoxLayout(self.top_bar)
@@ -138,9 +143,10 @@ class UI_MainWindow(object):
         self.bottom_bar = QFrame()
         self.bottom_bar.setMinimumHeight(25)
         self.bottom_bar.setMaximumHeight(25)
-        self.bottom_bar.setStyleSheet(" \
-            color: rgb(195, 204, 223); \
-            background-color: rgb(30, 48, 98); \
+        self.bottom_bar.setStyleSheet(f" \
+            color: {self.ThemeManager.getColor(ThemeManager.Colors.text)}; \
+            background-color: \
+                {self.ThemeManager.getColor(ThemeManager.Colors.background_dark)}; \
         ")
 
         self.bottom_bar_layout = QHBoxLayout(self.bottom_bar)
@@ -174,7 +180,8 @@ class UI_MainWindow(object):
 
 
         self.pages = QStackedWidget()
-        self.pages.setStyleSheet("font-size: 12pt; color: #f8f8f2;")
+        self.pages.setStyleSheet(f"font-size: 12pt; color: \
+            {self.ThemeManager.getColor(ThemeManager.Colors.text_light)};")
         self.ui_pages = UiApplicationPages()
         self.ui_pages.setupUi(self.pages)
 

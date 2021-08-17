@@ -64,8 +64,21 @@
    </item>
    <item row="3" column="0" colspan="2">
     <widget class="QPushButton" name="main_button">
+     <property name="styleSheet">
+      <string notr="true">QPushButton {{
+                color: red;
+                background-color: blue;
+                padding-left: 20px;
+	            padding-right: 20px;
+                text-align: center;
+                border: none;
+            }}
+            ButtonWithIcon:hover {{
+                background-color: blue;
+            }}</string>
+     </property>
      <property name="text">
-      <string>PushButton</string>
+      <string>Play</string>
      </property>
     </widget>
    </item>

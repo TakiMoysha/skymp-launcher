@@ -15,7 +15,7 @@ from gui.widgets.button_with_icon import ButtonWithIcon
 class UiPageSettings(object):
     def setupUi(self, Frame):
         if not Frame.objectName():
-            Frame.setObjectName(u"Frame")
+            Frame.setObjectName(u"PageSettings")
         Frame.resize(640, 388)
         self.gridLayout = QGridLayout(Frame)
         self.gridLayout.setObjectName(u"gridLayout")
@@ -48,8 +48,8 @@ class UiPageSettings(object):
     # setupUi
 
     def retranslateUi(self, Frame):
-        Frame.setWindowTitle(QCoreApplication.translate("Frame", u"Frame", None))
-        self.label.setText(QCoreApplication.translate("Frame", u"Path to Skyrim:", None))
-        self.openSkyrimFolder.setText(QCoreApplication.translate("Frame", u"Open", None))
+        Frame.setWindowTitle(QCoreApplication.translate("PageSettings", u"Settings", None))
+        self.label.setText(QCoreApplication.translate("PageSettings", u"Path to Skyrim:", None))
+        self.openSkyrimFolder.setText(QCoreApplication.translate("PageSettings", u"Open", None))
     # retranslateUi
 
