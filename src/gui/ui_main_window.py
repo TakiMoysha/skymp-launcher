@@ -49,15 +49,18 @@ class UI_MainWindow(object):
 
         self.show_menu_button = PushButton(
             text = "Menu",
-            icon_name = "menu.svg",
+            text_color = self.ThemeManager.getColor(ThemeManager.Colors.text_light),
+            icon_name = "menu.svg"
         )
         self.home_button = PushButton(
             text = "Home page",
+            text_color = self.ThemeManager.getColor(ThemeManager.Colors.text_light),
             icon_name = "home.svg",
             is_activate = True
         )
         self.btn_2 = PushButton(
             text = "Notifications",
+            text_color = self.ThemeManager.getColor(ThemeManager.Colors.text_light),
             icon_name = "bell.svg"
         )
 

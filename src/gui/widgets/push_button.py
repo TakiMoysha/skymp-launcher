@@ -12,10 +12,10 @@ class PushButton(QPushButton):
         minimum_width = 50,
         text_padding = 55,
         text_color = "#ffffff",
-        text_font = "9pt 'Segoe UI'",
+        text_font = "100 9pt 'Segoe UI'",
         icon_name = "",
-        icon_color = "#0d151b",
-        btn_color = "rgb(54, 73, 125)",
+        icon_color = "#0d151c",
+        btn_color = "#223e8c",
         btn_hover = "rgb(68, 88, 145)",
         btn_pressed = "rgb(40, 57, 105)",
         is_activate = False,
@@ -29,6 +29,7 @@ class PushButton(QPushButton):
         self.minimum_width = minimum_width
         self.text_padding = text_padding
         self.text_color = text_color
+        self.text_font = text_font
         self.icon_name = icon_name
         self.icon_color = icon_color
         self.btn_color = btn_color
@@ -50,6 +51,7 @@ class PushButton(QPushButton):
         self.setStyle(
             text_padding = self.text_padding,
             text_color = self.text_color,
+            text_font = self.text_font,
             btn_color = self.btn_color,
             btn_hover = self.btn_hover,
             btn_pressed = self.btn_pressed,
@@ -60,10 +62,11 @@ class PushButton(QPushButton):
     def setStyle(
         self,
         text_padding = 55,
-        text_color = "rgb(195, 204, 223);",
-        btn_color = "rgb(54, 73, 125);",
-        btn_hover = "rgb(68, 88, 145);",
-        btn_pressed = "rgb(40, 57, 105);",
+        text_color = "rgb(195, 204, 223)",
+        text_font = "700 9pt 'Segoe UI'",
+        btn_color = "rgb(54, 73, 125)",
+        btn_hover = "rgb(68, 88, 145)",
+        btn_pressed = "rgb(40, 57, 105)",
         is_activate = False
     ):
         style = f'''
@@ -72,6 +75,7 @@ class PushButton(QPushButton):
             background-color: {btn_color};
             padding-left: {text_padding}px;
             text-align: left;
+            font: {text_font};
             border: none;
         }}
         PushButton:hover {{

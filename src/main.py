@@ -9,13 +9,12 @@ from gui.utils.ui_functions import *
 from gui.utils.dialog import getExistingDirectoryByFileDialog
 from gui.widgets.notification_box import NotificationBox
 
-from adapter.path_validate import isPathToSkyrim
+from ViewModel.path_validate import isPathToSkyrim
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-
 
         self.setWindowTitle(APPLICATION_NAME)
         self.settings = Settings()

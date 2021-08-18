@@ -14,6 +14,7 @@ QCoreApplication.setApplicationName(APPLICATION_NAME)
 class Settings(MainWindow):
     class SettingsType(enum.Enum):
         skyrim_path = "skyrim_path"
+        theme = "theme"
 
 
     def __init__(self):

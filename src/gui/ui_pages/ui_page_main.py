@@ -18,7 +18,7 @@ class UiPageMain(object):
         if not app_page.objectName():
             app_page.setObjectName(u"page_main")
 
-        self.horizontal_layout = QHBoxLayout()
+        self.horizontal_layout = QHBoxLayout(app_page)
         self.horizontal_layout.setObjectName(u"horizontal_layout")
 
         self.server_descriptions = QWidget()
@@ -31,9 +31,11 @@ class UiPageMain(object):
         self.ui_servers_list = UiServersList()
         self.ui_servers_list.setupUi(self.servers_list)
 
+        self.servers_list.setStyleSheet("background-color: red;")
+        self.server_descriptions.setStyleSheet("background-color: red;")
+
         self.horizontal_layout.addWidget(self.server_descriptions)
         self.horizontal_layout.addWidget(self.servers_list)
-
 
         QMetaObject.connectSlotsByName(app_page)
 

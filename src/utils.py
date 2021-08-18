@@ -1,5 +1,6 @@
 import os
 import sys
+from typing import Union, Callable
 
 APP_PATH = os.path.abspath(os.getcwd())
 

@@ -16,7 +16,8 @@ class ThemeManager:
         button = "button"
         button_hover = "button_hover"
         button_press = "button_press"
-        background_base = "background_base"
+        background = "background"
+        background_dark = "background_dark"
         background_light = "background_light"
 
 
@@ -45,7 +46,6 @@ class ThemeManager:
 
 
     def getColor(self, color_name: Colors):
-        print(self.colors)
         return self.colors.get(color_name.value)
 
 
