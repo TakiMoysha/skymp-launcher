@@ -1,4 +1,0 @@
-
-
-class RecPswrdModel:
-    pass
