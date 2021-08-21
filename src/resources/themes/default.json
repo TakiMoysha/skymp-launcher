@@ -3,11 +3,12 @@
     "text_light": "#f8f8f2",
     "text_description": "#ffffff",
     "icon": "#0d151b",
+    "transparent": "#00000000",
     "background": "#282A36",
     "background_dark": "#191A21",
     "background_light": "#343746",
-    "button": "#2c4487",
-    "button_hover": "#3e5cb1a1",
-    "button_press": "#2c4487",
+    "button": "#344d2a",
+    "button_hover": "#274138",
+    "button_press": "#476d614f",
     "debug": "#960303"
 }

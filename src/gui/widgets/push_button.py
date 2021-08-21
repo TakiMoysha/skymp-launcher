@@ -114,7 +114,7 @@ class PushButton(QPushButton):
 
 
     def drawIcon(self, selfPainter, image_name, rect, color):
-        icon_path = resource_path(os.path.join("assets/icons/", image_name))
+        icon_path = resource_path(os.path.join("resources/icons/", image_name))
 
         icon = QPixmap(icon_path)
         painter = QPainter(icon)

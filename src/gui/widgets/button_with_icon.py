@@ -15,9 +15,10 @@ class ButtonWithIcon(QPushButton):
         text_color = "red",
         icon_type = "icons",
         icon_name = "",
-        icon_color = "rgb(195, 204, 223);",
-        btn_color = "rgb(26, 73, 125);",
-        btn_hover = "rgb(54, 73, 125);"
+        icon_color = "rgb(195, 204, 223)",
+        btn_color = "rgb(26, 73, 125)",
+        btn_hover = "rgb(54, 73, 125)",
+        btn_press = "rgb(50, 50, 125)"
     ):
         super().__init__()
         self.setText(text)
@@ -33,12 +34,14 @@ class ButtonWithIcon(QPushButton):
         self.icon_color = icon_color
         self.btn_color = btn_color
         self.btn_hover = btn_hover
+        self.btn_press = btn_press
 
         self.setStyle(
             text_padding = self.text_padding,
             text_color = self.text_color,
             btn_color = self.btn_color,
             btn_hover = self.btn_hover,
+            btn_press = self.btn_press,
         )
 
         self._setIcon()
@@ -50,6 +53,7 @@ class ButtonWithIcon(QPushButton):
         text_color = "black",
         btn_color = "",
         btn_hover = "",
+        btn_press = "",
     ):
         style = f'''
             ButtonWithIcon {{
@@ -63,13 +67,16 @@ class ButtonWithIcon(QPushButton):
             ButtonWithIcon:hover {{
                 background-color: {btn_hover};
             }}
+            ButtonWithIcon:pressed {{
+                background-color: {btn_press};
+            }}
         '''
         self.setStyleSheet(style)
 
 
     def _setIcon(self):
         icon_path = resource_path(
-            "/".join(["assets", self.icon_type, self.icon_name])
+            "/".join(["resources", self.icon_type, self.icon_name])
         )
         icon = QPixmap(icon_path)
         self.setIcon(icon)

@@ -8,8 +8,9 @@ from gui.ui_main_window import *
 from gui.utils.ui_functions import *
 from gui.utils.dialog import getExistingDirectoryByFileDialog
 from gui.widgets.notification_box import NotificationBox
+from gui.utils.ui_functions import UIFunctions
 
-from ViewModel.path_validate import isPathToSkyrim
+from controllers.path_validate import isPathToSkyrim
 
 
 class MainWindow(QMainWindow):

@@ -4,7 +4,7 @@ from gui.widgets.background_label import BackgroundLabel
 from gui.widgets.push_button import PushButton
 from gui.widgets.sys_buttons import SysButtons
 
-from ViewModel.theme_manager import ThemeManager, Colors
+from controllers.theme_manager import ThemeManager, Colors
 
 from gui.ui_pages.ui_pages import UiApplicationPages
 
@@ -50,14 +50,16 @@ class UI_MainWindow(object):
             text_color = f"{self.ThemeManager.getColor(Colors.text_light)}",
             icon_name = "menu.svg",
             btn_color = self.ThemeManager.getColor(Colors.background_light),
-            btn_pressed = self.ThemeManager.getColor(Colors.background),
+            btn_hover = self.ThemeManager.getColor(Colors.button_hover),
+            btn_pressed = self.ThemeManager.getColor(Colors.button_press),
         )
         self.home_button = PushButton(
             text = "Home page",
             text_color = f"{self.ThemeManager.getColor(Colors.text_light)}",
             icon_name = "home.svg",
             btn_color = self.ThemeManager.getColor(Colors.background_light),
-            btn_pressed = self.ThemeManager.getColor(Colors.background),
+            btn_hover = self.ThemeManager.getColor(Colors.button_hover),
+            btn_pressed = self.ThemeManager.getColor(Colors.button_press),
             is_activate = True
         )
         self.btn_2 = PushButton(
@@ -65,7 +67,8 @@ class UI_MainWindow(object):
             text_color = f"{self.ThemeManager.getColor(Colors.text_light)}",
             icon_name = "bell.svg",
             btn_color = self.ThemeManager.getColor(Colors.background_light),
-            btn_pressed = self.ThemeManager.getColor(Colors.background),
+            btn_hover = self.ThemeManager.getColor(Colors.button_hover),
+            btn_pressed = self.ThemeManager.getColor(Colors.button_press),
         )
 
         self.left_menu_top_layout.addWidget(self.show_menu_button)
@@ -91,6 +94,7 @@ class UI_MainWindow(object):
             text = "Settings",
             icon_name = "settings.svg",
             btn_color = self.ThemeManager.getColor(Colors.background_light),
+            btn_hover = self.ThemeManager.getColor(Colors.button_hover),
             btn_pressed = self.ThemeManager.getColor(Colors.background)
         )
 
@@ -175,7 +179,7 @@ class UI_MainWindow(object):
         self.bottom_right_size_grip = QSizeGrip(self.bottom_bar)
         self.bottom_right_size_grip.setStyleSheet(f"""
             QSizeGrip {{
-                image: url("{norm_resource_path("assets/images/size_grip.png")}");
+                image: url("{norm_resource_path("resources/images/size_grip.png")}");
                 width: 16px;
                 height: 16px;
             }}

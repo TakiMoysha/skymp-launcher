@@ -10,6 +10,7 @@
 
 from qt_core import *
 
+from controllers.theme_manager import ThemeManager, Colors
 from gui.widgets.button_with_icon import ButtonWithIcon
 
 class UiPageSettings(object):
@@ -32,11 +33,15 @@ class UiPageSettings(object):
 
         self.gridLayout.addWidget(self.pathToSkyrimFolder, 1, 0, 1, 1)
 
+        tm = ThemeManager()
         self.openSkyrimFolder = ButtonWithIcon(
             text = "Open",
-            text_color = "rgb(195, 204, 223);",
+            text_color = tm.getColor(Colors.text_light),
             icon_type = "images",
             icon_name = "folder.png",
+            btn_color = tm.getColor(Colors.button),
+            btn_hover = tm.getColor(Colors.button_hover),
+            btn_press = tm.getColor(Colors.button_press)
         )
         self.pathToSkyrimFolder.setObjectName(u"openSkyrimFolder")
 

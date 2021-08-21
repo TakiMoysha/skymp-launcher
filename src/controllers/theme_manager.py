@@ -15,12 +15,12 @@ class Colors(Enum):
         "text_description",
         "icon",
         "transparent",
-        "button",
-        "button_hover",
-        "button_press",
         "background",
         "background_dark",
         "background_light",
+        "button",
+        "button_hover",
+        "button_press",
         "debug"
     ]
 
@@ -30,12 +30,12 @@ class Colors(Enum):
     text_description = "text_description"
     icon = "icon"
     transparent = "transparent"
-    button = "button"
-    button_hover = "button_hover"
-    button_press = "button_press"
     background = "background"
     background_dark = "background_dark"
     background_light = "background_light"
+    button = "button"
+    button_hover = "button_hover"
+    button_press = "button_press"
     debug = "debug"
 
 
@@ -48,7 +48,7 @@ class ThemeManager:
     def __init__(self, theme_name="default"):
         self.colors = {}
 
-        json_file = resource_path(f"model/themes/{theme_name}.json")
+        json_file = resource_path(f"resources/themes/{theme_name}.json")
         app_path = os.path.abspath(os.getcwd())
         self.path_to_theme = os.path.normpath(os.path.join(app_path, json_file))
 
