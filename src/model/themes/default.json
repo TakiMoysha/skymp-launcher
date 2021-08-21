@@ -1,12 +1,13 @@
 {
     "text": "#C3CCDF",
-    "text_light": "#C3CCDF",
+    "text_light": "#f8f8f2",
     "text_description": "#ffffff",
     "icon": "#0d151b",
-    "background": "#1E3062",
-    "background_dark": "#0a35b8",
-    "background_light": "#223e8c",
-    "button": "#1651F5",
-    "button_hover": "#0044ff",
-    "button_press": "#0044ffa6"
+    "background": "#282A36",
+    "background_dark": "#191A21",
+    "background_light": "#343746",
+    "button": "#2c4487",
+    "button_hover": "#3e5cb1a1",
+    "button_press": "#2c4487",
+    "debug": "#960303"
 }

@@ -4,7 +4,7 @@ from gui.widgets.background_label import BackgroundLabel
 from gui.widgets.push_button import PushButton
 from gui.widgets.sys_buttons import SysButtons
 
-from ViewModel.theme_manager import ThemeManager
+from ViewModel.theme_manager import ThemeManager, Colors
 
 from gui.ui_pages.ui_pages import UiApplicationPages
 
@@ -28,10 +28,8 @@ class UI_MainWindow(object):
 
         # Left Menu
         self.left_menu = QFrame()
-        self.left_menu.setStyleSheet(
-            f"background-color: \
-                {self.ThemeManager.getColor(ThemeManager.Colors.background_light)}"
-        )
+        self.left_menu.setStyleSheet(f"background-color: \
+            {self.ThemeManager.getColor(Colors.background_light)};")
         self.left_menu.setMaximumWidth(50)
         self.left_menu.setMinimumWidth(50)
 
@@ -49,19 +47,25 @@ class UI_MainWindow(object):
 
         self.show_menu_button = PushButton(
             text = "Menu",
-            text_color = self.ThemeManager.getColor(ThemeManager.Colors.text_light),
-            icon_name = "menu.svg"
+            text_color = f"{self.ThemeManager.getColor(Colors.text_light)}",
+            icon_name = "menu.svg",
+            btn_color = self.ThemeManager.getColor(Colors.background_light),
+            btn_pressed = self.ThemeManager.getColor(Colors.background),
         )
         self.home_button = PushButton(
             text = "Home page",
-            text_color = self.ThemeManager.getColor(ThemeManager.Colors.text_light),
+            text_color = f"{self.ThemeManager.getColor(Colors.text_light)}",
             icon_name = "home.svg",
+            btn_color = self.ThemeManager.getColor(Colors.background_light),
+            btn_pressed = self.ThemeManager.getColor(Colors.background),
             is_activate = True
         )
         self.btn_2 = PushButton(
             text = "Notifications",
-            text_color = self.ThemeManager.getColor(ThemeManager.Colors.text_light),
-            icon_name = "bell.svg"
+            text_color = f"{self.ThemeManager.getColor(Colors.text_light)}",
+            icon_name = "bell.svg",
+            btn_color = self.ThemeManager.getColor(Colors.background_light),
+            btn_pressed = self.ThemeManager.getColor(Colors.background),
         )
 
         self.left_menu_top_layout.addWidget(self.show_menu_button)
@@ -85,7 +89,9 @@ class UI_MainWindow(object):
 
         self.settings_button = PushButton(
             text = "Settings",
-            icon_name = "settings.svg"
+            icon_name = "settings.svg",
+            btn_color = self.ThemeManager.getColor(Colors.background_light),
+            btn_pressed = self.ThemeManager.getColor(Colors.background)
         )
 
         self.left_menu_bottom_layout.addWidget(self.settings_button)
@@ -102,10 +108,9 @@ class UI_MainWindow(object):
         self.left_menu_layout.addWidget(self.left_menu_label_verion)
 
 
-
         self.content = QFrame()
         self.content.setStyleSheet(f'background-color: \
-            {self.ThemeManager.getColor(ThemeManager.Colors.background)}'
+            {self.ThemeManager.getColor(Colors.background)};'
         )
 
         self.content_layout = QVBoxLayout(self.content)
@@ -117,9 +122,9 @@ class UI_MainWindow(object):
         self.top_bar.setMinimumHeight(30)
         self.top_bar.setMaximumHeight(30)
         self.top_bar.setStyleSheet(f" \
-            color: {self.ThemeManager.getColor(ThemeManager.Colors.text)}; \
+            color: {self.ThemeManager.getColor(Colors.text)}; \
             background-color: \
-                {self.ThemeManager.getColor(ThemeManager.Colors.background_dark)} \
+                {self.ThemeManager.getColor(Colors.background_dark)}; \
         ")
 
         self.top_bar_layout = QHBoxLayout(self.top_bar)
@@ -147,9 +152,9 @@ class UI_MainWindow(object):
         self.bottom_bar.setMinimumHeight(25)
         self.bottom_bar.setMaximumHeight(25)
         self.bottom_bar.setStyleSheet(f" \
-            color: {self.ThemeManager.getColor(ThemeManager.Colors.text)}; \
+            color: {self.ThemeManager.getColor(Colors.text)}; \
             background-color: \
-                {self.ThemeManager.getColor(ThemeManager.Colors.background_dark)}; \
+                {self.ThemeManager.getColor(Colors.background_dark)}; \
         ")
 
         self.bottom_bar_layout = QHBoxLayout(self.bottom_bar)
@@ -184,7 +189,7 @@ class UI_MainWindow(object):
 
         self.pages = QStackedWidget()
         self.pages.setStyleSheet(f"font-size: 12pt; color: \
-            {self.ThemeManager.getColor(ThemeManager.Colors.text_light)};")
+            {self.ThemeManager.getColor(Colors.text_light)};")
         self.ui_pages = UiApplicationPages()
         self.ui_pages.setupUi(self.pages)
 
@@ -195,7 +200,5 @@ class UI_MainWindow(object):
 
         self.main_layout.addWidget(self.left_menu)
         self.main_layout.addWidget(self.content)
-
-
 
         parent.setCentralWidget(self.central_frame)
