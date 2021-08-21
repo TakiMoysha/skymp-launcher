@@ -52,6 +52,7 @@ class UI_MainWindow(object):
             btn_color = self.ThemeManager.getColor(Colors.background_light),
             btn_hover = self.ThemeManager.getColor(Colors.button_hover),
             btn_pressed = self.ThemeManager.getColor(Colors.button_press),
+            btn_is_pressed = self.ThemeManager.getColor(Colors.background)
         )
         self.home_button = PushButton(
             text = "Home page",
@@ -60,6 +61,7 @@ class UI_MainWindow(object):
             btn_color = self.ThemeManager.getColor(Colors.background_light),
             btn_hover = self.ThemeManager.getColor(Colors.button_hover),
             btn_pressed = self.ThemeManager.getColor(Colors.button_press),
+            btn_is_pressed = self.ThemeManager.getColor(Colors.background),
             is_activate = True
         )
         self.btn_2 = PushButton(
@@ -69,6 +71,7 @@ class UI_MainWindow(object):
             btn_color = self.ThemeManager.getColor(Colors.background_light),
             btn_hover = self.ThemeManager.getColor(Colors.button_hover),
             btn_pressed = self.ThemeManager.getColor(Colors.button_press),
+            btn_is_pressed = self.ThemeManager.getColor(Colors.background)
         )
 
         self.left_menu_top_layout.addWidget(self.show_menu_button)
@@ -95,7 +98,8 @@ class UI_MainWindow(object):
             icon_name = "settings.svg",
             btn_color = self.ThemeManager.getColor(Colors.background_light),
             btn_hover = self.ThemeManager.getColor(Colors.button_hover),
-            btn_pressed = self.ThemeManager.getColor(Colors.background)
+            btn_pressed = self.ThemeManager.getColor(Colors.background),
+            btn_is_pressed = self.ThemeManager.getColor(Colors.background)
         )
 
         self.left_menu_bottom_layout.addWidget(self.settings_button)

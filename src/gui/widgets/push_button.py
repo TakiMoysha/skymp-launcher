@@ -18,6 +18,7 @@ class PushButton(QPushButton):
         btn_color = "#223e8c",
         btn_hover = "rgb(68, 88, 145)",
         btn_pressed = "rgb(40, 57, 105)",
+        btn_is_pressed = "rgb(40, 57, 105)",
         is_activate = False,
     ):
         super().__init__()
@@ -35,6 +36,7 @@ class PushButton(QPushButton):
         self.btn_color = btn_color
         self.btn_hover = btn_hover
         self.btn_pressed = btn_pressed
+        self.btn_is_pressed = btn_is_pressed
         self.is_activate = is_activate
 
         self.setStyle(
@@ -43,6 +45,7 @@ class PushButton(QPushButton):
             btn_color = self.btn_color,
             btn_hover = self.btn_hover,
             btn_pressed = self.btn_pressed,
+            btn_is_pressed = self.btn_is_pressed,
             is_activate = self.is_activate
         )
 
@@ -55,6 +58,7 @@ class PushButton(QPushButton):
             btn_color = self.btn_color,
             btn_hover = self.btn_hover,
             btn_pressed = self.btn_pressed,
+            btn_is_pressed = self.btn_is_pressed,
             is_activate = is_activate_menu
         )
 
@@ -66,7 +70,8 @@ class PushButton(QPushButton):
         text_font = "700 9pt 'Segoe UI'",
         btn_color = "rgb(54, 73, 125)",
         btn_hover = "rgb(68, 88, 145)",
-        btn_pressed = "rgb(40, 57, 105)",
+        btn_pressed = "rgb(68, 88, 145)",
+        btn_is_pressed = "rgb(40, 57, 105)",
         is_activate = False
     ):
         style = f'''
@@ -89,7 +94,7 @@ class PushButton(QPushButton):
         active_style = f'''
             PushButton {{
                 background-color: {btn_color};
-                border-right: 5px solid {btn_pressed}
+                border-right: 5px solid {btn_is_pressed}
             }}
         '''
         if not is_activate:
