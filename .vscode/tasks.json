@@ -15,12 +15,7 @@
                 "--onefile",
                 "--add-data",
                 {
-                    "value": "./src/assets/;assets/",
-                    "quoting": "strong"
-                },
-                "--add-data",
-                {
-                    "value": "./src/model/themes/;model/themes/",
+                    "value": "./src/resources/;resources/",
                     "quoting": "strong"
                 },
                 "--debug=all",
@@ -42,12 +37,7 @@
                 "--noconsole",
                 "--add-data",
                 {
-                    "value": "./src/assets/;assets/",
-                    "quoting": "strong"
-                },
-                "--add-data",
-                {
-                    "value": "./src/model/themes/;model/themes/",
+                    "value": "./src/resources/;resources/",
                     "quoting": "strong"
                 },
                 "--name",
