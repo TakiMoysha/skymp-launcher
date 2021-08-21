@@ -5,6 +5,8 @@ from enum import Enum
 # from settings import Settings
 import json
 
+from utils import resource_path
+
 class Colors(Enum):
     __slots__ = [
         "text",
@@ -46,7 +48,7 @@ class ThemeManager:
     def __init__(self, theme_name="default"):
         self.colors = {}
 
-        json_file = f"model/themes/{theme_name}.json"
+        json_file = resource_path(f"model/themes/{theme_name}.json")
         app_path = os.path.abspath(os.getcwd())
         self.path_to_theme = os.path.normpath(os.path.join(app_path, json_file))
 

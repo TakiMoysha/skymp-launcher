@@ -18,6 +18,11 @@
                     "value": "./src/assets/;assets/",
                     "quoting": "strong"
                 },
+                "--add-data",
+                {
+                    "value": "./src/model/themes/;model/themes/",
+                    "quoting": "strong"
+                },
                 "--debug=all",
                 {
                     "value": "./src/main.py",
@@ -38,6 +43,11 @@
                 "--add-data",
                 {
                     "value": "./src/assets/;assets/",
+                    "quoting": "strong"
+                },
+                "--add-data",
+                {
+                    "value": "./src/model/themes/;model/themes/",
                     "quoting": "strong"
                 },
                 "--name",
