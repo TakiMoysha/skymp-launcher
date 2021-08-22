@@ -28,6 +28,15 @@ class ReqVerifyRegisterModel(Model):
         self.pin = pin
 
 
+    def json(self):
+        as_dict = {
+            "email": self.email,
+            "password": self.password,
+            "pin": self.pin
+        }
+        return as_dict
+
+
 
 
 class ResLoginModel(Model):

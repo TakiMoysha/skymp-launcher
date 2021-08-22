@@ -1,3 +1,4 @@
+import json
 
 from model.main import Model
 
@@ -27,4 +28,4 @@ class ServerModel(Model):
             "maxPlayers": self.max_players,
             "online": self.online,
         }
-        return as_dict
+        return json.dumps(as_dict)
