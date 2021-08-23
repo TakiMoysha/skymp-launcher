@@ -17,7 +17,7 @@ class UiPageMain(object):
     def setupUi(self, app_page):
         if not app_page.objectName():
             app_page.setObjectName(u"page_main")
-
+        app_page.resize(600, 480)
         self.horizontal_layout = QHBoxLayout(app_page)
         self.horizontal_layout.setObjectName(u"horizontal_layout")
 
@@ -31,8 +31,6 @@ class UiPageMain(object):
         self.ui_servers_list = UiServersList()
         self.ui_servers_list.setupUi(self.servers_list)
 
-        self.servers_list.setStyleSheet("background-color: red;")
-        self.server_descriptions.setStyleSheet("background-color: red;")
 
         self.horizontal_layout.addWidget(self.server_descriptions)
         self.horizontal_layout.addWidget(self.servers_list)

@@ -5,7 +5,7 @@ class UiServerDescriptions(object):
         if not parent_page.objectName():
             parent_page.setObjectName(u"page_home")
 
-        self.vertical_layout = QVBoxLayout()
+        self.vertical_layout = QVBoxLayout(parent_page)
         self.vertical_layout.setObjectName(u"vertical_layout")
 
         self.label = QLabel()

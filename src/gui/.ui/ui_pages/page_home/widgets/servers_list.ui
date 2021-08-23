@@ -15,6 +15,9 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <widget class="QColumnView" name="columnView"/>
+   </item>
+   <item>
     <widget class="QTableView" name="servers_list_table">
      <property name="whatsThis">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;server&lt;/p&gt;&lt;p&gt;vservx&lt;/p&gt;&lt;p&gt;asdf&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
