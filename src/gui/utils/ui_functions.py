@@ -1,23 +1,16 @@
 from qt_core import *
 from main import *
 
-STATE = 0
-
 class UIFunctions():
     def removeDefaultTitleBar(self):
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
 
 
-    def maximizeWindow(self):
-        global STATE
-        status = STATE
-
-        if (status == 0):
-            self.showMaximized()
-            STATE = 1
+    def maximizeWindow(self: QMainWindow):
+        if (self.windowState() == Qt.WindowNoState):
             self.ui.ui_top_label_right.button_maximize.setToolTip("Restore")
+            self.setWindowState(Qt.WindowMaximized)
         else:
-            self.showNormal()
-            STATE = 0
             self.ui.ui_top_label_right.button_maximize.setToolTip("Maximize")
+            self.setWindowState(Qt.WindowNoState)
