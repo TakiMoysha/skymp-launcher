@@ -4,18 +4,20 @@ from qt_core import *
 
 from gui.widgets.title_bar_button import TitleBarButton
 
-class SysButtons(QWidget):
-    def setupUi(self, parent):
+class Ui_SysButtons(QWidget):
+    def setupUi(self, parent: QWidget):
         if not parent.objectName():
             parent.setObjectName(u"horizontalLayoutButtons")
 
         # Minimize
+        self.horizontal_layout = QHBoxLayout(parent)
+
         self.button_minimize = TitleBarButton(
             background_color = "rgb(114, 255, 0);",
             hover_background_color = "rgba(114, 255, 0, 150)"
         )
         self.button_minimize.setObjectName(u"button_minimize")
-        parent.addWidget(self.button_minimize)
+        self.horizontal_layout.addWidget(self.button_minimize)
 
         # Maximize
         self.button_maximize = TitleBarButton(
@@ -23,7 +25,7 @@ class SysButtons(QWidget):
             hover_background_color = "rgba(255, 187, 0, 150)"
         )
         self.button_maximize.setObjectName(u"button_maximize")
-        parent.addWidget(self.button_maximize)
+        self.horizontal_layout.addWidget(self.button_maximize)
 
         # Exit
         self.button_exit = TitleBarButton(
@@ -31,10 +33,9 @@ class SysButtons(QWidget):
             hover_background_color = "rgba(255, 0, 0, 150)"
         )
         self.button_exit.setObjectName(u"button_exit")
-        parent.addWidget(self.button_exit)
+        self.horizontal_layout.addWidget(self.button_exit)
 
-
-        # parent.addWidget(self.parent)
+        QMetaObject.connectSlotsByName(parent)
 
         self.retranslateUi(parent)
 

@@ -24,15 +24,12 @@ QTableWidget QTableCornerButton::section {{
 	padding: 3px;
     border-top-left-radius: {radius}px;
 }}
-QHeaderView::section:horizontal
-{{
+QHeaderView::section:horizontal {{
     border: none;
 	background-color: {selection_color};
 	padding: 3px;
-
 }}
-QHeaderView::section:vertical
-{{
+QHeaderView::section:vertical {{
     border: none;
 	background-color: {selection_color};
 	padding-left: 5px;

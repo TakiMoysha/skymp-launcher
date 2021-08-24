@@ -2,7 +2,7 @@ from qt_core import *
 
 from gui.widgets.background_label import BackgroundLabel
 from gui.widgets.push_button import PushButton
-from gui.widgets.sys_buttons import SysButtons
+from gui.ui_title_bar import Ui_TitleBar
 
 from controllers.theme_manager import ThemeManager, Colors
 
@@ -126,34 +126,14 @@ class UI_MainWindow(object):
         self.content_layout.setSpacing(0)
 
         # TOP BAR
-        self.top_bar = QWidget()
-        self.top_bar.setMinimumHeight(30)
-        self.top_bar.setMaximumHeight(30)
-        self.top_bar.setStyleSheet(f" \
-            color: {self.ThemeManager.getColor(Colors.text)}; \
-            background-color: \
-                {self.ThemeManager.getColor(Colors.background_dark)}; \
+        self.title_bar = QWidget()
+        self.title_bar.setFixedHeight(30)
+        self.title_bar.setStyleSheet(f" \
+            color: {ThemeManager().getColor(Colors.text)}; \
+            background-color: {ThemeManager().getColor(Colors.background_dark)}; \
         ")
-
-        self.top_bar_layout = QHBoxLayout(self.top_bar)
-        self.top_bar_layout.setContentsMargins(10, 0, 4, 0)
-
-        self.top_label_left = QLabel("SkyMP Launcher")
-
-        self.top_spacer = QSpacerItem(
-            100,
-            20,
-            QSizePolicy.Maximum,
-            QSizePolicy.Minimum
-        )
-
-        self.top_label_right = QHBoxLayout(self.top_bar)
-        self.ui_top_label_right = SysButtons()
-        self.ui_top_label_right.setupUi(self.top_label_right)
-
-        self.top_bar_layout.addWidget(self.top_label_left)
-        self.top_bar_layout.addItem(self.top_spacer)
-        self.top_bar_layout.addLayout(self.top_label_right)
+        self.ui_title_bar = Ui_TitleBar()
+        self.ui_title_bar.setupUi(self.title_bar)
 
         # BOTTOM BAR
         self.bottom_bar = QFrame()
@@ -168,7 +148,8 @@ class UI_MainWindow(object):
         self.bottom_bar_layout = QHBoxLayout(self.bottom_bar)
         self.bottom_bar_layout.setContentsMargins(8, 0, 8, 0)
 
-        self.bottom_label_left = QLabel("Status text")
+        self.bottom_status_left = QStatusBar()
+        self.bottom_status_left.showMessage("Ready")
 
         self.bottom_spacer = QSpacerItem(
             20,
@@ -189,12 +170,12 @@ class UI_MainWindow(object):
             }}
         """)
 
-        self.bottom_bar_layout.addWidget(self.bottom_label_left)
+        self.bottom_bar_layout.addWidget(self.bottom_status_left)
         self.bottom_bar_layout.addItem(self.bottom_spacer)
         self.bottom_bar_layout.addWidget(self.bottom_label_right)
         self.bottom_bar_layout.addWidget(self.bottom_right_size_grip, 0)
 
-
+        # PAGES
         self.pages = QStackedWidget()
         self.pages.setStyleSheet(f"font-size: 12pt; color: \
             {self.ThemeManager.getColor(Colors.text_light)};")
@@ -202,7 +183,7 @@ class UI_MainWindow(object):
         self.ui_pages.setupUi(self.pages)
 
 
-        self.content_layout.addWidget(self.top_bar)
+        self.content_layout.addWidget(self.title_bar)
         self.content_layout.addWidget(self.pages)
         self.content_layout.addWidget(self.bottom_bar)
 

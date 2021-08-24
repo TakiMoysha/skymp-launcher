@@ -24,19 +24,6 @@ class UiServersList(object):
             context_color = tm.getColor(Colors.debug),
             selection_color = tm.getColor(Colors.button)
         )
-        self.table_widget.setColumnCount(4)
-        self.table_widget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        self.table_widget.setSelectionMode(QAbstractItemView.ExtendedSelection)
-        self.table_widget.setSelectionBehavior(QAbstractItemView.SelectRows)
-
-        for i in range(2):
-            row_number = self.table_widget.rowCount()
-            self.table_widget.insertRow(row_number)
-            self.table_widget.setItem(row_number, 0, QTableWidgetItem(str("Test")))
-            self.table_widget.setItem(row_number, 1, QTableWidgetItem(str("Test")))
-            self.table_widget.setItem(row_number, 2, QTableWidgetItem(str(23+row_number)))
-            self.table_widget.setItem(row_number, 3, QTableWidgetItem(str(1234)))
-
 
         self.vertical_layout.addWidget(self.label)
         self.vertical_layout.addWidget(self.table_widget)

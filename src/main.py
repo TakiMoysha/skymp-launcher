@@ -12,7 +12,6 @@ from gui.utils.ui_functions import UIFunctions
 
 from controllers.path_validate import isPathToSkyrim
 
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -23,30 +22,35 @@ class MainWindow(QMainWindow):
         self.ui = UI_MainWindow()
         self.ui.setup_ui(self)
 
-
         self.ui.show_menu_button.clicked.connect(self.showMenu)
 
         self.ui.home_button.clicked.connect(self.showPageHome)
         self.ui.btn_2.clicked.connect(self.showPage2)
         self.ui.settings_button.clicked.connect(self.showPageSettings)
 
-        self.ui.ui_top_label_right.button_minimize.clicked.connect(
-            lambda: self.showMinimized()
+        self.ui.ui_title_bar.ui_sys_buttons.button_minimize.clicked.connect(
+            lambda: self.setWindowState(Qt.WindowMinimized)
         )
-        self.ui.ui_top_label_right.button_maximize.clicked.connect(
-            lambda: UIFunctions.maximizeWindow(self)
+        self.ui.ui_title_bar.ui_sys_buttons.button_maximize.clicked.connect(
+            lambda: UIFunctions.maximizeWindow(
+                self,
+                self.ui.ui_title_bar.ui_sys_buttons.button_maximize
+            )
         )
-        self.ui.ui_top_label_right.button_exit.clicked.connect(
+        self.ui.ui_title_bar.ui_sys_buttons.button_exit.clicked.connect(
             lambda: self.close()
         )
 
         def mouseMoveEvent(event):
+            if self.windowState() == Qt.WindowMaximized:
+                self.setWindowState(Qt.WindowNoState)
+                self.move(event.pos())
             if (event.buttons() == Qt.LeftButton):
                 self.move(self.pos() + event.globalPos() - self.dragPos)
                 self.dragPos = event.globalPos()
                 event.accept()
 
-        self.ui.top_bar.mouseMoveEvent = mouseMoveEvent
+        self.ui.title_bar.mouseMoveEvent = mouseMoveEvent
 
         UIFunctions.removeDefaultTitleBar(self)
 
@@ -55,11 +59,20 @@ class MainWindow(QMainWindow):
         self.loadSettings()
         self.show()
 
+# Events
+    def mousePressEvent(self, event: QMouseEvent):
+        if event.button() == Qt.LeftButton:
+            self.dragPos = event.globalPos()
 
-    def mousePressEvent(self, event):
-        self.dragPos = event.globalPos()
+    def changeEvent(self, event: QEvent):
+        super().changeEvent(event)
+        visible = self.isMaximized()
+        if visible:
+            self.layout().setContentsMargins(0, 0, 0, 0)
+        else:
+            m = self.layout().setContentsMargins(5, 5, 5, 5)
 
-
+# Functions
     def showMenu(self):
         menu_width = self.ui.left_menu.width()
 

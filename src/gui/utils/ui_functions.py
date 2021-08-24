@@ -3,14 +3,15 @@ from main import *
 
 class UIFunctions():
     def removeDefaultTitleBar(self):
-        self.setWindowFlag(Qt.FramelessWindowHint)
-        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground, True)
+        self.setMouseTracking(True)
 
 
-    def maximizeWindow(self: QMainWindow):
+    def maximizeWindow(self: QMainWindow, called_button: QPushButton):
         if (self.windowState() == Qt.WindowNoState):
-            self.ui.ui_top_label_right.button_maximize.setToolTip("Restore")
+            called_button.setToolTip("Restore")
             self.setWindowState(Qt.WindowMaximized)
         else:
-            self.ui.ui_top_label_right.button_maximize.setToolTip("Maximize")
+            called_button.setToolTip("Maximize")
             self.setWindowState(Qt.WindowNoState)
