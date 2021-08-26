@@ -4,8 +4,7 @@ from main import *
 class UIFunctions():
     def removeDefaultTitleBar(self):
         self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
-        self.setAttribute(Qt.WA_TranslucentBackground, True)
-        self.setMouseTracking(True)
+        # self.setMouseTracking(True)
 
 
     def maximized(window: QMainWindow, called_button: QPushButton):
