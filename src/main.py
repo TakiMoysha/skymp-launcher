@@ -14,7 +14,7 @@ from controllers.path_validate import isPathToSkyrim
 
 class MainWindow(QMainWindow):
     def __init__(self):
-        super().__init__()
+        super(MainWindow, self).__init__()
 
         self.setWindowTitle(APPLICATION_NAME)
         self.settings = Settings()
@@ -32,7 +32,7 @@ class MainWindow(QMainWindow):
             lambda: self.setWindowState(Qt.WindowMinimized)
         )
         self.ui.ui_title_bar.ui_sys_buttons.button_maximize.clicked.connect(
-            lambda: UIFunctions.maximizeWindow(
+            lambda: UIFunctions.toggleMaximized(
                 self,
                 self.ui.ui_title_bar.ui_sys_buttons.button_maximize
             )
@@ -41,38 +41,86 @@ class MainWindow(QMainWindow):
             lambda: self.close()
         )
 
-        def mouseMoveEvent(event):
-            if self.windowState() == Qt.WindowMaximized:
-                self.setWindowState(Qt.WindowNoState)
-                self.move(event.pos())
-            if (event.buttons() == Qt.LeftButton):
-                self.move(self.pos() + event.globalPos() - self.dragPos)
-                self.dragPos = event.globalPos()
-                event.accept()
-
-        self.ui.title_bar.mouseMoveEvent = mouseMoveEvent
+        self.ui.bottom_status_left.showMessage("Ready")
 
         UIFunctions.removeDefaultTitleBar(self)
+        self._setMouseTracking(True)
 
         self.settingsPageInitButtons()
 
         self.loadSettings()
         self.show()
 
-# Events
+# Override
     def mousePressEvent(self, event: QMouseEvent):
         if event.button() == Qt.LeftButton:
-            self.dragPos = event.globalPos()
+            self.dragPos = event.globalPosition().toPoint()
 
-    def changeEvent(self, event: QEvent):
-        super().changeEvent(event)
-        visible = self.isMaximized()
-        if visible:
-            self.layout().setContentsMargins(0, 0, 0, 0)
-        else:
-            m = self.layout().setContentsMargins(5, 5, 5, 5)
+
+    def event(self, event: QEvent):
+        super().event(event)
+        if event.type() == QEvent.MouseMove and self.windowState() == Qt.WindowNoState:
+            self.setCursor(UIFunctions._getCursor(self._getEdges(event.position().toPoint())))
+        elif event.type() == QEvent.TouchUpdate:
+            self.moveOrResize(self, event.position().toPoint())
+        elif (isinstance(event, QMouseEvent) and event.button() == Qt.LeftButton):
+
+            if event.type() == QEvent.MouseButtonDblClick:
+                pass
+                if event.position().toPoint().y() <= 36:
+                    if self.windowState() == Qt.WindowFullScreen:
+                        pass
+                    elif self.windowState() == Qt.WindowMaximized:
+                        self.showNormal()
+                    else:
+                        self.showMaximized()
+            elif event.type() == QEvent.MouseButtonPress:
+                self.moveOrResize(self.windowHandle(), event.position().toPoint(), self.width(), self.height())
+
+        return False
 
 # Functions
+    def _setMouseTracking(self, flag):
+        def recursive_set(parent):
+            for child in parent.findChildren(QObject):
+                try:
+                    child.setMouseTracking(flag)
+                except:
+                    pass
+                recursive_set(child)
+        QWidget.setMouseTracking(self, flag)
+        recursive_set(self)
+
+
+    def _getEdges(self, pos):
+        """what an edge this is"""
+        edge = 0
+        x, y = pos.x(), pos.y()
+        Margins = 5
+
+        if y <= Margins:
+            edge |= Qt.TopEdge
+        if x <= Margins:
+            edge |= Qt.LeftEdge
+        if x >= self.width() - Margins:
+            edge |= Qt.RightEdge
+        if y >= self.height() - Margins:
+            edge |= Qt.BottomEdge
+
+        return edge
+
+
+
+    def moveOrResize(self, window, pos, width, height):
+        edges = self._getEdges(pos)
+        if edges:
+            if window.windowState() == Qt.WindowNoState:
+                window.startSystemResize(edges)
+        else:
+            if pos.y() <= self.ui.title_bar.height():
+                window.startSystemMove()
+
+
     def showMenu(self):
         menu_width = self.ui.left_menu.width()
 
@@ -141,8 +189,19 @@ class MainWindow(QMainWindow):
             self.settings.getValue(Settings.SettingsType.skyrim_path, "")
         )
 
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MainWindow()
+    # window_handle = window.windowHandle()
+
+    def start_resize(window: QWidget):
+        print("start_resize")
+        window.startSystemResize(Qt.RightEdge)
+
+    def start_move(window: QWidget):
+        print("start_move")
+        window.startSystemMove()
+
+    # QTimer.singleShot(3 * 1000, (lambda: start_resize(window_handle)))
+
     sys.exit(app.exec())

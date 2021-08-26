@@ -1,64 +1,95 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
 <svg
-   width="18"
-   height="18"
-   viewBox="0 0 4.7624999 4.7625001"
    version="1.1"
-   id="svg5"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   id="Capa_1"
+   x="0px"
+   y="0px"
+   width="18.01"
+   height="18.01"
+   viewBox="0 0 18.01 18.01"
+   xml:space="preserve"
    sodipodi:docname="home.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview7"
-     pagecolor="#505050"
-     bordercolor="#eeeeee"
-     borderopacity="1"
-     inkscape:pageshadow="0"
-     inkscape:pageopacity="0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
-     showgrid="false"
-     inkscape:zoom="16"
-     inkscape:cx="11.46875"
-     inkscape:cy="9.28125"
-     inkscape:window-width="1587"
-     inkscape:window-height="1041"
-     inkscape:window-x="123"
-     inkscape:window-y="49"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="layer1-3"
-     units="px"
-     objecttolerance="20"
-     showborder="true"
-     borderlayer="false"
-     inkscape:showpageshadow="true" />
-  <defs
-     id="defs2" />
-  <g
-     inkscape:label="Слой 1"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <g
-       transform="matrix(0.01033883,0,0,0.0110457,-0.43774616,-3.05237)"
-       id="layer1-3">
-      <g
-         id="g41"
-         transform="matrix(0.99300276,0,0,0.98241724,-155.88057,-547.63712)">
-        <path
-           d="m 594.42734,1061.8243 z m 0,0 -162.82,-144.18998 -162.9,144.24998 v 206.12 c 0,5.33 4.3,9.6 9.62,9.6 h 101.81 v -90.38 c 0,-5.32 4.27,-9.62 9.6,-9.62 h 83.65 c 5.33,0 9.6,4.3 9.6,9.62 v 90.38 h 101.84 c 5.32,0 9.6,-4.27 9.6,-9.6 z m -325.72,0.06 z"
-           id="rect2391" />
-        <path
-           d="m 430.66734,838.72432 -231.05,204.58998 24.338,27.45 207.65,-183.87998 207.61,183.87998 24.29,-27.45 -231,-204.58998 -0.9,1.04 -0.94,-1.04 z"
-           id="path2399" />
-        <path
-           d="m 268.70734,868.17432 h 58.57 l -0.51,34.69 -58.06,52.45 z"
-           id="rect2404" />
-      </g>
-    </g>
-  </g>
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs43" /><sodipodi:namedview
+   id="namedview41"
+   pagecolor="#505050"
+   bordercolor="#eeeeee"
+   borderopacity="1"
+   inkscape:pageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   inkscape:zoom="1.3395636"
+   inkscape:cx="228.4326"
+   inkscape:cy="294.49889"
+   inkscape:window-width="1920"
+   inkscape:window-height="1057"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Capa_1" />
+<g
+   id="g8"
+   transform="matrix(0.03910514,0,0,0.04913871,0.00502157,-2.3042249)">
+	<g
+   id="g6">
+		<path
+   d="M 230.149,120.939 65.986,256.274 c 0,0.191 -0.048,0.472 -0.144,0.855 -0.094,0.38 -0.144,0.656 -0.144,0.852 v 137.041 c 0,4.948 1.809,9.236 5.426,12.847 3.616,3.613 7.898,5.431 12.847,5.431 h 109.63 V 303.664 h 73.097 v 109.64 h 109.629 c 4.948,0 9.236,-1.814 12.847,-5.435 3.617,-3.607 5.432,-7.898 5.432,-12.847 V 257.981 c 0,-0.76 -0.104,-1.334 -0.288,-1.707 z"
+   id="path2" />
+		<path
+   d="M 457.122,225.438 394.6,173.476 V 56.989 c 0,-2.663 -0.856,-4.853 -2.574,-6.567 -1.704,-1.712 -3.894,-2.568 -6.563,-2.568 h -54.816 c -2.666,0 -4.855,0.856 -6.57,2.568 -1.711,1.714 -2.566,3.905 -2.566,6.567 v 55.673 L 251.849,54.417 c -6.084,-4.949 -13.318,-7.423 -21.694,-7.423 -8.375,0 -15.608,2.474 -21.698,7.423 L 3.172,225.438 c -1.903,1.52 -2.946,3.566 -3.14,6.136 -0.193,2.568 0.472,4.811 1.997,6.713 l 17.701,21.128 c 1.525,1.712 3.521,2.759 5.996,3.142 2.285,0.192 4.57,-0.476 6.855,-1.998 L 230.149,95.817 427.719,260.558 c 1.526,1.328 3.521,1.991 5.996,1.991 h 0.858 c 2.471,-0.376 4.463,-1.43 5.996,-3.138 l 17.703,-21.125 c 1.522,-1.906 2.189,-4.145 1.991,-6.716 -0.195,-2.563 -1.242,-4.609 -3.141,-6.132 z"
+   id="path4" />
+	</g>
+</g>
+<g
+   id="g10">
+</g>
+<g
+   id="g12">
+</g>
+<g
+   id="g14">
+</g>
+<g
+   id="g16">
+</g>
+<g
+   id="g18">
+</g>
+<g
+   id="g20">
+</g>
+<g
+   id="g22">
+</g>
+<g
+   id="g24">
+</g>
+<g
+   id="g26">
+</g>
+<g
+   id="g28">
+</g>
+<g
+   id="g30">
+</g>
+<g
+   id="g32">
+</g>
+<g
+   id="g34">
+</g>
+<g
+   id="g36">
+</g>
+<g
+   id="g38">
+</g>
 </svg>

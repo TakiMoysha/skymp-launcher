@@ -1,6 +1,9 @@
+from asyncio.tasks import sleep
 import os
 import json
 import unittest
+import asyncio
+import grequests
 
 import model.network.auth_models as auth_models
 import model.network.account as account
@@ -11,6 +14,7 @@ PASSWORD = os.getenv("PASSWORD_TESTS")
 
 OK_STATUS = 200
 
+
 class NetworkAccount(unittest.TestCase):
     def test_login(self):
         login_model = auth_models.ReqLoginModel(
@@ -18,9 +22,14 @@ class NetworkAccount(unittest.TestCase):
             password=PASSWORD
         )
         auth_account = account.login(login_model)
+        if auth_account.status_code != OK_STATUS:
+            print(auth_account.status_code)
+            print(auth_account.text)
         self.assertEqual(auth_account.status_code, OK_STATUS)
 
 
-
 if __name__ == "__name__":
-    unittest.main()
+    try:
+        unittest.main()
+    except Exception as err:
+        print(err)

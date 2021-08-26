@@ -149,7 +149,6 @@ class UI_MainWindow(object):
         self.bottom_bar_layout.setContentsMargins(8, 0, 8, 0)
 
         self.bottom_status_left = QStatusBar()
-        self.bottom_status_left.showMessage("Ready")
 
         self.bottom_spacer = QSpacerItem(
             20,

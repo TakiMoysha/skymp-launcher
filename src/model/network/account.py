@@ -11,22 +11,22 @@ from model.network.auth_models import \
 _URL_API = "https://skymp.io/api/"
 
 def register(model: ReqRegisterModel):
-    raw = requests.post(f"{_URL_API}users", model.json())
+    raw = requests.post(f"{_URL_API}users", data=model.json())
     return raw
 
 
 def login(model: ReqLoginModel):
-    raw = requests.post(f"{_URL_API}users/login", model.json())
+    raw = requests.post(f"{_URL_API}users/login", data=model.json())
     return raw
 
 
 def verify(model: ReqVerifyRegisterModel):
-    raw = requests.post(f"{_URL_API}users/login", model.json())
+    raw = requests.post(f"{_URL_API}users/login", data=model.json())
     return raw
 
 
 def reset_password(model: ReqResetPassword):
-    raw = requests.post(f"{_URL_API}users/reset-password", model.json())
+    raw = requests.post(f"{_URL_API}users/reset-password", data=model.json())
     return raw
 
 
