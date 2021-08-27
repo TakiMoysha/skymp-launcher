@@ -9,6 +9,7 @@ dist
 # Debug files
 *.pyo
 
-# Spec. Assembly is done via tasks vscode
+# Buil. Assembly is done via tasks vscode
+env
 main.spec
 SkyMP Luncher.spec
