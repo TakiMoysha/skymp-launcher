@@ -63,6 +63,7 @@ class ButtonWithIcon(QPushButton):
 	            padding-right: {text_padding}px;
                 text-align: center;
                 border: none;
+                border-radius: 8px;
             }}
             ButtonWithIcon:hover {{
                 background-color: {btn_hover};

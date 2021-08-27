@@ -96,7 +96,7 @@ class MainWindow(QMainWindow):
         """what an edge this is"""
         edge = 0
         x, y = pos.x(), pos.y()
-        Margins = 5
+        Margins = 3
 
         if y <= Margins:
             edge |= Qt.TopEdge

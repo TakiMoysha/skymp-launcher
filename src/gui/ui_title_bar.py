@@ -33,7 +33,6 @@ class Ui_TitleBar(QWidget):
         print("asdf")
 
 
-
     def moveWindow(self, mouse_pos):
         if mouse_pos.y() <= self.height():
                 self.startSystemMove()
