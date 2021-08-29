@@ -2,6 +2,16 @@ from qt_core import *
 from main import *
 
 class UIFunctions():
+    linkToStatusBar = None
+
+    @classmethod
+    def initStatusBar(cls, status_bar: QStatusBar):
+        cls.linkToStatusBar = status_bar
+
+    @classmethod
+    def setStatus(cls, text):
+        cls.linkToStatusBar.showMessage(text)
+
     def removeDefaultTitleBar(self):
         self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
         # self.setMouseTracking(True)
@@ -9,13 +19,11 @@ class UIFunctions():
 
     def maximized(window: QMainWindow, called_button: QPushButton):
         called_button.setToolTip("Restore")
-        # window.setWindowState(Qt.WindowMaximized)
         window.showMaximized()
 
 
     def restore(window: QMainWindow, called_button: QPushButton):
         called_button.setToolTip("Maximize")
-        # window.setWindowState(Qt.WindowNoState)
         window.showNormal()
 
 
@@ -26,7 +34,7 @@ class UIFunctions():
             UIFunctions.restore(window=self, called_button=called_button)
 
 
-    def _getCursor(edges):
+    def getCursor(edges):
         """which cursor icon to display"""
         if edges == Qt.LeftEdge | Qt.TopEdge or edges == Qt.RightEdge | Qt.BottomEdge:
             return Qt.SizeFDiagCursor

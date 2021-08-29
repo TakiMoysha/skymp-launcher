@@ -25,24 +25,27 @@ class ServerTabWidget(QTabWidget):
             QTabBar::tab:selected {{
                 color: white;
             }}
-
             QTabBar::tab:!selected {{
                 color: silver;
             }}
-
             QTabBar::tab:!selected:hover {{
                 background: #999;
             }}
-
             QTabBar::tab:top:!selected {{
                 margin-top: 3px;
             }}
             QTabBar::tab {{
                 padding-top: 2px;
                 padding-bottom: 2px;
-                padding-left: 4px;
-                padding-right: 4px;
+                padding-left: 6px;
+                padding-right: 6px;
                 border: 1px solid black;
+            }}
+            QTabBar::tab:top:selected {{
+                border-bottom-color: {getColor(Colors.background_dark)};
+            }}
+            QTabBar::tab:bottom:selected {{
+                border-top-color: {getColor(Colors.background_dark)};
             }}
         """
         self.setStyleSheet("".join([style, style_tab_bar]))

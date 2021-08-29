@@ -22,26 +22,9 @@ class MainWindow(QMainWindow):
         self.ui = UI_MainWindow()
         self.ui.setup_ui(self)
 
-        self.ui.show_menu_button.clicked.connect(self.showMenu)
+        UIFunctions.initStatusBar(self.ui.bottom_status_left)
 
-        self.ui.home_button.clicked.connect(self.showPageHome)
-        self.ui.btn_2.clicked.connect(self.showPage2)
-        self.ui.settings_button.clicked.connect(self.showPageSettings)
-
-        self.ui.ui_title_bar.ui_sys_buttons.button_minimize.clicked.connect(
-            lambda: self.setWindowState(Qt.WindowMinimized)
-        )
-        self.ui.ui_title_bar.ui_sys_buttons.button_maximize.clicked.connect(
-            lambda: UIFunctions.toggleMaximized(
-                self,
-                self.ui.ui_title_bar.ui_sys_buttons.button_maximize
-            )
-        )
-        self.ui.ui_title_bar.ui_sys_buttons.button_exit.clicked.connect(
-            lambda: self.close()
-        )
-
-        self.ui.bottom_status_left.showMessage("Ready")
+        self.handle_buttons()
 
         UIFunctions.removeDefaultTitleBar(self)
         self._setMouseTracking(True)
@@ -59,14 +42,22 @@ class MainWindow(QMainWindow):
 
     def event(self, event: QEvent):
         super().event(event)
-        if event.type() == QEvent.MouseMove and self.windowState() == Qt.WindowNoState:
-            self.setCursor(UIFunctions._getCursor(self._getEdges(event.position().toPoint())))
+
+        def isMoveWindow():
+            isTypeMove = event.type() == QEvent.MouseMove
+            isWindowNoState = self.windowState() == Qt.WindowNoState
+            return isTypeMove and isWindowNoState
+
+        if isMoveWindow():
+            self.setCursor(
+                UIFunctions.getCursor(
+                    self.getEdges(event.position().toPoint())
+                )
+            )
         elif event.type() == QEvent.TouchUpdate:
             self.moveOrResize(self, event.position().toPoint())
         elif (isinstance(event, QMouseEvent) and event.button() == Qt.LeftButton):
-
             if event.type() == QEvent.MouseButtonDblClick:
-                pass
                 if event.position().toPoint().y() <= 36:
                     if self.windowState() == Qt.WindowFullScreen:
                         pass
@@ -75,9 +66,36 @@ class MainWindow(QMainWindow):
                     else:
                         self.showMaximized()
             elif event.type() == QEvent.MouseButtonPress:
-                self.moveOrResize(self.windowHandle(), event.position().toPoint(), self.width(), self.height())
+                self.moveOrResize(
+                    self.windowHandle(),
+                    event.position().toPoint(),
+                    self.width(),
+                    self.height()
+                )
 
         return False
+
+#
+    def handle_buttons(self):
+        self.ui.ui_title_bar.ui_sys_buttons.button_minimize.clicked.connect(
+            lambda: self.setWindowState(Qt.WindowMinimized)
+        )
+        self.ui.ui_title_bar.ui_sys_buttons.button_maximize.clicked.connect(
+            lambda: UIFunctions.toggleMaximized(
+                self,
+                self.ui.ui_title_bar.ui_sys_buttons.button_maximize
+            )
+        )
+        self.ui.ui_title_bar.ui_sys_buttons.button_exit.clicked.connect(
+            lambda: self.close()
+        )
+
+        self.ui.show_menu_button.clicked.connect(self.showMenu)
+
+        self.ui.home_button.clicked.connect(self.showPageHome)
+        self.ui.btn_2.clicked.connect(self.showPage2)
+        self.ui.settings_button.clicked.connect(self.showPageSettings)
+
 
 # Functions
     def _setMouseTracking(self, flag):
@@ -92,7 +110,7 @@ class MainWindow(QMainWindow):
         recursive_set(self)
 
 
-    def _getEdges(self, pos):
+    def getEdges(self, pos):
         """what an edge this is"""
         edge = 0
         x, y = pos.x(), pos.y()
@@ -110,9 +128,8 @@ class MainWindow(QMainWindow):
         return edge
 
 
-
     def moveOrResize(self, window, pos, width, height):
-        edges = self._getEdges(pos)
+        edges = self.getEdges(pos)
         if edges:
             if window.windowState() == Qt.WindowNoState:
                 window.startSystemResize(edges)
@@ -123,7 +140,6 @@ class MainWindow(QMainWindow):
 
     def showMenu(self):
         menu_width = self.ui.left_menu.width()
-
         width = 50
         if menu_width == 50:
             width = 140
