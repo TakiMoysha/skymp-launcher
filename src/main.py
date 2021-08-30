@@ -69,8 +69,6 @@ class MainWindow(QMainWindow):
                 self.moveOrResize(
                     self.windowHandle(),
                     event.position().toPoint(),
-                    self.width(),
-                    self.height()
                 )
 
         return False
@@ -128,7 +126,7 @@ class MainWindow(QMainWindow):
         return edge
 
 
-    def moveOrResize(self, window, pos, width, height):
+    def moveOrResize(self, window, pos):
         edges = self.getEdges(pos)
         if edges:
             if window.windowState() == Qt.WindowNoState:

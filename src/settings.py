@@ -7,7 +7,6 @@ ORGANIZATION_NAME = "REDHOUSE"
 ORGANIZATION_DOMAIN = "REDHOUSE"
 APPLICATION_NAME = "SkyMp"
 
-QCoreApplication.setApplicationName(ORGANIZATION_NAME)
 QCoreApplication.setOrganizationDomain(ORGANIZATION_DOMAIN)
 QCoreApplication.setApplicationName(APPLICATION_NAME)
 

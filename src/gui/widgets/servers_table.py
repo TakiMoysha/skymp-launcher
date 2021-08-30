@@ -55,6 +55,7 @@ class ServersTable(QTableView):
         for i in js_list:
             servers_tuple.append(dictToList(i))
 
+
         self.setModel(ServersTableModel(self, servers_tuple))
 
         self.set_style(
@@ -89,6 +90,7 @@ class ServersTable(QTableView):
         )
         self.setStyleSheet(style)
 
+
     def update(self, new_list: tuple):
         self.model().beginResetModel()
         self.model().updateData(new_list)
@@ -104,13 +106,7 @@ class HorizontalHeader(QHeaderView):
 
 class ServersTableModel(QAbstractTableModel):
     servers = tuple()
-    COLUMNS_NAME = {
-        "name": "Name",
-        "ip": "Address",
-        "port": "Port",
-        "maxPlayers": "Players",
-        "online": "Online"
-    }
+    COLUMNS_ID = ("name", "maxPlayers", "online")
 
     def __init__(self, parent, *args):
         super().__init__(parent)
@@ -118,12 +114,19 @@ class ServersTableModel(QAbstractTableModel):
 
 
     def rowCount(self, parent):
+        """sets the number of rows"""
         return len(self.servers)
 
 
     def columnCount(self, parent):
         """sets the number of columns"""
-        return len(self.COLUMNS_NAME)
+        return len(self.COLUMNS_ID)
+
+
+    def headerData(self, section: int, orientation: Qt.Orientation, role: int):
+        if role == Qt.DisplayRole and orientation == Qt.Horizontal:
+            return self.COLUMNS_ID[section]
+        return super().headerData(section, orientation, role=role)
 
 
     def data(self, index, role):
