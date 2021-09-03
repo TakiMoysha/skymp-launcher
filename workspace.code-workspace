@@ -7,5 +7,7 @@
 			"path": "../python-skymp-launcher-cli"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.pythonPath": "C:\\Users\\Moyses\\Envs\\pyqt_env\\Scripts\\python.exe"
+	}
 }
