@@ -5,9 +5,10 @@ from qt_core import *
 from settings import *
 
 from gui.ui_main_window import UI_MainWindow
+from gui.widgets.push_button import PushButton
 from gui.utils.dialog import getExistingDirectoryByFileDialog
 from gui.widgets.notification_box import NotificationBox
-from gui.utils.ui_utils import UIFunctions, StaticWidget
+from gui.utils.ui_utils import UIFunctions, WidgetsProvider
 
 from controllers.path_validate import isPathToSkyrim
 
@@ -21,7 +22,7 @@ class MainWindow(QMainWindow):
         self.ui = UI_MainWindow()
         self.ui.setup_ui(self)
 
-        StaticWidget.initStatusBar(self.ui.bottom_status_left)
+        WidgetsProvider.initStatusBar(self.ui.bottom_status_left)
 
         self.handle_buttons()
 
