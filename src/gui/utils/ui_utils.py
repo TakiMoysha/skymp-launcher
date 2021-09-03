@@ -2,19 +2,8 @@ from qt_core import *
 from main import *
 
 class UIFunctions():
-    linkToStatusBar = None
-
-    @classmethod
-    def initStatusBar(cls, status_bar: QStatusBar):
-        cls.linkToStatusBar = status_bar
-
-    @classmethod
-    def setStatus(cls, text):
-        cls.linkToStatusBar.showMessage(text)
-
     def removeDefaultTitleBar(self):
         self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
-        # self.setMouseTracking(True)
 
 
     def maximized(window: QMainWindow, called_button: QPushButton):
@@ -68,3 +57,16 @@ class UIFunctions():
             edge |= Qt.BottomEdge
 
         return edge
+
+
+class WidgetsProvider:
+    """Stores links to widgets used from different locations in the application"""
+    linkToStatusBar = None
+
+    @classmethod
+    def initStatusBar(cls, status_bar: QStatusBar):
+        cls.linkToStatusBar = status_bar
+
+    @classmethod
+    def setStatus(cls, text):
+        cls.linkToStatusBar.showMessage(text)

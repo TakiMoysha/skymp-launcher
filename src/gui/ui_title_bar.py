@@ -1,7 +1,7 @@
 from qt_core import *
 
 from gui.ui_sys_buttons import Ui_SysButtons
-from gui.utils.ui_functions import UIFunctions
+from gui.utils.ui_utils import UIFunctions
 
 class Ui_TitleBar(QWidget):
 

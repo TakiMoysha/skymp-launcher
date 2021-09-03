@@ -4,11 +4,10 @@ import sys
 from qt_core import *
 from settings import *
 
-from gui.ui_main_window import *
-from gui.utils.ui_functions import *
+from gui.ui_main_window import UI_MainWindow
 from gui.utils.dialog import getExistingDirectoryByFileDialog
 from gui.widgets.notification_box import NotificationBox
-from gui.utils.ui_functions import UIFunctions
+from gui.utils.ui_utils import UIFunctions, StaticWidget
 
 from controllers.path_validate import isPathToSkyrim
 
@@ -22,7 +21,7 @@ class MainWindow(QMainWindow):
         self.ui = UI_MainWindow()
         self.ui.setup_ui(self)
 
-        UIFunctions.initStatusBar(self.ui.bottom_status_left)
+        StaticWidget.initStatusBar(self.ui.bottom_status_left)
 
         self.handle_buttons()
 
@@ -33,6 +32,7 @@ class MainWindow(QMainWindow):
 
         self.loadSettings()
         self.show()
+
 
 # Override
     def mousePressEvent(self, event: QMouseEvent):
@@ -205,17 +205,7 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon("icon.ico"))
     window = MainWindow()
-    # window_handle = window.windowHandle()
-
-    def start_resize(window: QWidget):
-        print("start_resize")
-        window.startSystemResize(Qt.RightEdge)
-
-    def start_move(window: QWidget):
-        print("start_move")
-        window.startSystemMove()
-
-    # QTimer.singleShot(3 * 1000, (lambda: start_resize(window_handle)))
 
     sys.exit(app.exec())
