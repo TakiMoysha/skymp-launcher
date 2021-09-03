@@ -12,6 +12,8 @@ class UiServersList(object):
         self.vertical_layout = QVBoxLayout(parent_page)
         self.vertical_layout.setObjectName(u"vertical_layout")
 
+        tm = ThemeManager()
+
         self.small_horizontal_layout = QHBoxLayout()
         self.label = QLabel()
         self.label.setObjectName(u"label")
@@ -19,22 +21,25 @@ class UiServersList(object):
         self.label.setAlignment(Qt.AlignCenter)
         self.refresh_btn = ButtonWithIcon(
             icon_name="refresh.svg",
-            icon_type="icons"
+            icon_type="icons",
+            btn_color=tm.getColor(Colors.button),
+            btn_hover=tm.getColor(Colors.button_hover),
+            btn_press=tm.getColor(Colors.button_press)
         )
         self.refresh_btn.setMaximumWidth(32)
 
         self.small_horizontal_layout.addWidget(self.label)
         self.small_horizontal_layout.addWidget(self.refresh_btn)
 
-        tm = ThemeManager()
 
         self.table = ServersTable(
-            radius = 8,
-            color = tm.getColor(Colors.text),
-            bg_color = tm.getColor(Colors.background),
-            border_color = tm.getColor(Colors.button),
-            context_color = tm.getColor(Colors.debug),
-            selection_color = tm.getColor(Colors.button)
+            radius=8,
+            color=tm.getColor(Colors.text),
+            bg_color=tm.getColor(Colors.background),
+            border_color=tm.getColor(Colors.button),
+            context_color=tm.getColor(Colors.debug),
+            selection_color=tm.getColor(Colors.button),
+            header_background=tm.getColor(Colors.background_dark)
         )
 
         self.vertical_layout.addLayout(self.small_horizontal_layout)
