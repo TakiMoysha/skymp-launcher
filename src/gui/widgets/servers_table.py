@@ -21,7 +21,6 @@ class ServersTable(QTableView):
         self.setSelectionMode(QAbstractItemView.SingleSelection)
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.verticalHeader().hide()
-        self.setSortingEnabled(True)
         self.setFrameStyle(QFrame.Plain)
 
         #! for tests
@@ -48,12 +47,19 @@ class ServersTable(QTableView):
         for i in js_list:
             servers_tuple.append(dictToList(i))
 
-        self.setModel(ServersTableModel(self))
+        self.serversTableModel = ServersTableModel(self)
+
+        self.sortProxyModel = QSortFilterProxyModel()
+        self.sortProxyModel.setSourceModel(self.serversTableModel)
+
+        self.setModel(self.sortProxyModel)
+        self.setSortingEnabled(True)
 
         self.setHorizontalHeader(HorizontalHeader(self))
         self.horizontalHeader().setSectionResizeMode(0, QHeaderView.Stretch)
         self.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeToContents)
         self.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeToContents)
+
         self.update(servers_tuple)
 
         self.set_style(
@@ -96,12 +102,13 @@ class ServersTable(QTableView):
 
 
     def update(self, new_list: tuple):
-        self.model().updateData(new_list)
+        self.serversTableModel.updateData(new_list)
 
 
 class HorizontalHeader(QHeaderView):
     def __init__(self, parent):
         QHeaderView.__init__(self, Qt.Horizontal, parent=parent)
+        self.setSectionsClickable(True)
         self.setSectionResizeMode(QHeaderView.Stretch)
 
 

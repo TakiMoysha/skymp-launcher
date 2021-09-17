@@ -30,7 +30,8 @@ QTableWidget QTableCornerButton::section {{
 
 HorizontalHeader {{
 }}
-HorizontalHeader::section {{
+HorizontalHeader::section:selected {{
+    color: ffffff;
 }}
 HorizontalHeader::section:horizontal {{
     border: none;
