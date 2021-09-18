@@ -1,12 +1,13 @@
 import ctypes.wintypes
 from ctypes.wintypes import POINT
+import os
 from PySide6.QtWidgets import QMainWindow
 
 import win32api
 import win32con
 import win32gui
 
-# from qt_core import *
+from qt_core import *
 
 # try:
 #     from PyQt5 import QtCore, QtGui, QtWidgets
@@ -183,7 +184,42 @@ class Ui_FormFrameless(object):
     def retranslateUi(self, FormFrameless):
         _translate = QtCore.QCoreApplication.translate
         FormFrameless.setWindowTitle(_translate("FormFrameless", "Form"))
-        self.buttonMinimum.setToolTip(_translate("FormFrameless", "Minimum"))
+
+        font = QtGui.QFont()
+        font.setPointSize(10)
+
+        # create a rect based on passed in args and create a color
+        rect = QtCore.QRect(0, 0, 32, 32)
+        text_rect = QtCore.QRect(5, 5, 32 - 10, 32 - 10)
+        color = QtGui.QColor(155, 118, 67)
+
+        # create a pen and set the color
+        pen = QtGui.QPen()
+        pen.setColor(color)
+
+        # create a pixmap to paint our image and text on
+        pixmap = QtGui.QPixmap(32, 32)
+
+        # create the painter, set the pen, the font, and then draw the image first, then the text on top
+        painter = QtGui.QPainter()
+        painter.begin(pixmap)
+        painter.setPen(pen)
+        painter.setFont(font)
+        image = QtGui.QImage("./icon.ico")
+        painter.drawImage(rect, image)
+        painter.drawText(text_rect, QtCore.Qt.TextWordWrap, "text")
+        painter.end()
+
+        dir_name = os.getcwd()
+        file_name = QtCore.QFile(os.path.join(dir_name, "tooltip.png"))
+        file_name.open(QtCore.QIODevice.WriteOnly)
+        pixmap.save(file_name, "png")
+
+        tooltip = "<img src = \"" + os.path.join("./tooltip.png") + "\">"
+
+
+        # self.buttonMinimum.setToolTip(_translate("FormFrameless", "Minimum"))
+        self.buttonMinimum.setToolTip(tooltip)
         self.buttonMinimum.setText(_translate("FormFrameless", "0"))
         self.buttonMaximum.setToolTip(_translate("FormFrameless", "Maximum"))
         self.buttonMaximum.setText(_translate("FormFrameless", "1"))
