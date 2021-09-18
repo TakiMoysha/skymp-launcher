@@ -1,13 +1,24 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": ".",
 		},
 		{
 			"path": "../python-skymp-launcher-cli"
 		}
 	],
 	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/*.pyo": true,
+			"**/__pycache__": true,
+			"**/build": true,
+		},
 		"python.pythonPath": "C:\\Users\\Moyses\\Envs\\pyqt_env\\Scripts\\python.exe"
 	}
 }
