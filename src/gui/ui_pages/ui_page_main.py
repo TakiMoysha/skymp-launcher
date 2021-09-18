@@ -1,7 +1,7 @@
 from qt_core import *
 
-from gui.ui_pages.components.ui_server_descriptions import UiServerDescriptions
-from gui.ui_pages.components.ui_servers_list import UiServersList
+from gui.ui_pages.ui_server_descriptions import UiServerDescriptions
+from gui.ui_pages.ui_servers_list import UiServersList
 
 class UiPageMain(object):
     def setupUi(self, app_page):

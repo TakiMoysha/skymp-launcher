@@ -51,7 +51,7 @@ class UI_MainWindow(object):
             icon_name = "menu.svg",
             btn_color = self.ThemeManager.getColor(Colors.background_light),
             btn_hover = self.ThemeManager.getColor(Colors.button_hover),
-            btn_pressed = self.ThemeManager.getColor(Colors.button_press),
+            btn_pressed = self.ThemeManager.getColor(Colors.background),
             btn_is_pressed = self.ThemeManager.getColor(Colors.background)
         )
         self.home_button = PushButton(
@@ -60,7 +60,7 @@ class UI_MainWindow(object):
             icon_name = "home.svg",
             btn_color = self.ThemeManager.getColor(Colors.background_light),
             btn_hover = self.ThemeManager.getColor(Colors.button_hover),
-            btn_pressed = self.ThemeManager.getColor(Colors.button_press),
+            btn_pressed = self.ThemeManager.getColor(Colors.background),
             btn_is_pressed = self.ThemeManager.getColor(Colors.background),
             is_activate = True
         )
@@ -70,7 +70,7 @@ class UI_MainWindow(object):
             icon_name = "bell.svg",
             btn_color = self.ThemeManager.getColor(Colors.background_light),
             btn_hover = self.ThemeManager.getColor(Colors.button_hover),
-            btn_pressed = self.ThemeManager.getColor(Colors.button_press),
+            btn_pressed = self.ThemeManager.getColor(Colors.background),
             btn_is_pressed = self.ThemeManager.getColor(Colors.background)
         )
 

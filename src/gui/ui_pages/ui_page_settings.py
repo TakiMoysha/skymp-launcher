@@ -18,6 +18,7 @@ class UiPageSettings(object):
         if not Frame.objectName():
             Frame.setObjectName(u"PageSettings")
         Frame.resize(640, 388)
+        Frame.setStyleSheet("padding: 4px")
         self.gridLayout = QGridLayout(Frame)
         self.gridLayout.setObjectName(u"gridLayout")
         self.label = QLabel(Frame)
@@ -26,14 +27,25 @@ class UiPageSettings(object):
 
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
 
+        tm = ThemeManager()
+
         self.pathToSkyrimFolder = QLineEdit(Frame)
         self.pathToSkyrimFolder.setObjectName(u"pathToSkyrimFolder")
         self.pathToSkyrimFolder.setMinimumSize(QSize(300, 24))
         self.pathToSkyrimFolder.setReadOnly(True)
+        self.pathToSkyrimFolder.setStyleSheet(f"""
+            QLineEdit {{
+                border-style: outset;
+                border-width: 2px;
+                border-radius: 8px;
+                border-color: { tm.getColor(Colors.button) };
+                font: 12px;
+                padding: 4px;
+            }}
+        """)
 
         self.gridLayout.addWidget(self.pathToSkyrimFolder, 1, 0, 1, 1)
 
-        tm = ThemeManager()
         self.openSkyrimFolder = ButtonWithIcon(
             text = "Open",
             text_color = tm.getColor(Colors.text_light),
@@ -46,6 +58,9 @@ class UiPageSettings(object):
         self.pathToSkyrimFolder.setObjectName(u"openSkyrimFolder")
 
         self.gridLayout.addWidget(self.openSkyrimFolder, 1, 1, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.gridLayout.addItem(self.verticalSpacer, 2, 0, 1, 1)
 
         self.retranslateUi(Frame)
 
