@@ -1,8 +1,7 @@
 style = '''
 ServersTable {{
-    border-style: solid;
-    border-width: 1px;
-    border-color: {border_color};
+    outline: none;
+    border: 1px solid {border_color};
     border-radius: {radius};
     padding: 5px;
     gridline-color: {transparent};
@@ -10,7 +9,6 @@ ServersTable {{
     font: {text_font};
 }}
 ServersTable::item {{
-    border-color: none;
     padding-left: 5px;
     padding-right: 5px;
     border-style: solid;
@@ -19,13 +17,6 @@ ServersTable::item {{
 }}
 ServersTable::item:selected {{
     background-color: {selection_color};
-}}
-
-QTableWidget QTableCornerButton::section {{
-    border: none;
-	background-color: #333;
-	padding: 3px;
-    border-top-left-radius: {radius}px;
 }}
 
 HorizontalHeader {{

@@ -20,7 +20,6 @@ class ServersTable(QTableView):
         self.setSelectionMode(QAbstractItemView.SingleSelection)
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.verticalHeader().hide()
-        self.setFrameStyle(QFrame.Plain)
 
         #! for tests
         js_list = [

@@ -29,10 +29,6 @@ QComboBox::down-arrow {{
     width: 14px;
     height: 14px;
 }}
-QComboBox::down-arrow:hover {{
-    width: 16px;
-    height: 16px;
-}}
 
 QComboBox::down-arrow:on {{
     width: 12px;
