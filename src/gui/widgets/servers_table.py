@@ -1,7 +1,6 @@
 from qt_core import *
 
-from .server_table_style import style as servers_table_style
-
+from .servers_table_style import style as servers_table_style
 
 class ServersTable(QTableView):
     def __init__(

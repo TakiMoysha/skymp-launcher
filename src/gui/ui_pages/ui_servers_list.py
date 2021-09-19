@@ -3,6 +3,9 @@ from qt_core import *
 
 from controllers.theme_manager import ThemeManager, Colors
 from gui.widgets.servers_table import ServersTable
+from utils import norm_resource_path
+
+from .ui_servers_list_style import combo_box_style
 
 class UiServersList(object):
     def setupUi(self, parent_page):
@@ -15,10 +18,20 @@ class UiServersList(object):
         tm = ThemeManager()
 
         self.small_horizontal_layout = QHBoxLayout()
-        self.label = QLabel()
-        self.label.setObjectName(u"label")
-        self.label.setText("ServersList")
-        self.label.setAlignment(Qt.AlignCenter)
+
+        self.combo_box_master_servers = QComboBox()
+        self.combo_box_master_servers.setObjectName(u"combo_box_master_servers")
+        default_icon = QIcon(norm_resource_path("./resources/icons/default_master_server.svg"))
+        self.combo_box_master_servers.addItem(default_icon, "master-server1")
+        self.combo_box_master_servers.addItem(default_icon, "master-server2")
+        self.combo_box_master_servers.setMinimumHeight(32)
+        self.combo_box_master_servers.setCursor(Qt.PointingHandCursor)
+        image_arrow_path = norm_resource_path("./resources/icons/drop-down-arrow.svg")
+        self.combo_box_master_servers.setStyleSheet(combo_box_style.format(
+            border_color=tm.getColor(Colors.button),
+            transparent=tm.getColor(Colors.transparent),
+            arrow_path=image_arrow_path
+        ))
 
         self.add_new_master_server = ButtonWithIcon(
             icon_name="plus.svg",
@@ -40,7 +53,7 @@ class UiServersList(object):
         self.refresh_btn.setMaximumWidth(32)
         self.refresh_btn.setToolTip("Update server list")
 
-        self.small_horizontal_layout.addWidget(self.label)
+        self.small_horizontal_layout.addWidget(self.combo_box_master_servers)
         self.small_horizontal_layout.addWidget(self.add_new_master_server)
         self.small_horizontal_layout.addWidget(self.refresh_btn)
 
