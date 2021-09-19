@@ -19,8 +19,10 @@ class UiPageSettings(object):
             Frame.setObjectName(u"PageSettings")
         Frame.resize(640, 388)
         Frame.setStyleSheet("padding: 4px")
+
         self.gridLayout = QGridLayout(Frame)
         self.gridLayout.setObjectName(u"gridLayout")
+
         self.label = QLabel(Frame)
         self.label.setObjectName(u"label")
         self.label.setMaximumSize(QSize(16777215, 40))

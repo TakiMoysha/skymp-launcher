@@ -2,7 +2,7 @@ from qt_core import *
 
 from gui.ui_sys_buttons import Ui_SysButtons
 
-class Ui_TitleBar(QWidget):
+class UiTitleBar(QWidget):
 
     def setupUi(self, parent: QWidget):
         self.title_bar_layout = QHBoxLayout(parent)

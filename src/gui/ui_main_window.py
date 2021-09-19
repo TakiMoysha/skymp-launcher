@@ -2,7 +2,7 @@ from qt_core import *
 
 from gui.widgets.background_label import BackgroundLabel
 from gui.widgets.push_button import PushButton
-from gui.ui_title_bar import Ui_TitleBar
+from gui.ui_title_bar import UiTitleBar
 
 from controllers.theme_manager import ThemeManager, Colors
 
@@ -10,7 +10,7 @@ from gui.ui_pages.ui_pages import UiApplicationPages
 
 from utils import norm_resource_path
 
-class UI_MainWindow(object):
+class UIMainWindow(object):
     def setup_ui(self, parent):
         if not parent.objectName():
             parent.setObjectName("MainWindow")
@@ -132,7 +132,7 @@ class UI_MainWindow(object):
             color: {ThemeManager().getColor(Colors.text)}; \
             background-color: {ThemeManager().getColor(Colors.background_dark)}; \
         ")
-        self.ui_title_bar = Ui_TitleBar()
+        self.ui_title_bar = UiTitleBar()
         self.ui_title_bar.setupUi(self.title_bar)
 
         # BOTTOM BAR

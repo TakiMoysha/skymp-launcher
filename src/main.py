@@ -4,7 +4,7 @@ import sys
 from qt_core import *
 from settings import *
 
-from gui.ui_main_window import UI_MainWindow
+from gui.ui_main_window import UIMainWindow
 from gui.widgets.push_button import PushButton
 from gui.utils.dialog import getExistingDirectoryByFileDialog
 from gui.widgets.notification_box import NotificationBox
@@ -19,7 +19,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(APPLICATION_NAME)
         self.settings = Settings()
 
-        self.ui = UI_MainWindow()
+        self.ui = UIMainWindow()
         self.ui.setup_ui(self)
 
         WidgetsProvider.initStatusBar(self.ui.bottom_status_left)
@@ -27,7 +27,7 @@ class MainWindow(QMainWindow):
         self.handle_buttons()
 
         UIFunctions.removeDefaultTitleBar(self)
-        self._setMouseTracking(True)
+        self.setMouseTracking(True)
 
         self.settingsPageInitButtons()
 
@@ -97,7 +97,7 @@ class MainWindow(QMainWindow):
 
 
 # Functions
-    def _setMouseTracking(self, flag):
+    def setMouseTracking(self, flag):
         def recursive_set(parent):
             for child in parent.findChildren(QObject):
                 try:

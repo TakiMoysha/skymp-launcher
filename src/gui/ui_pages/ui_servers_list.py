@@ -19,6 +19,17 @@ class UiServersList(object):
         self.label.setObjectName(u"label")
         self.label.setText("ServersList")
         self.label.setAlignment(Qt.AlignCenter)
+
+        self.add_new_master_server = ButtonWithIcon(
+            icon_name="plus.svg",
+            icon_type="icons",
+            btn_color=tm.getColor(Colors.button),
+            btn_hover=tm.getColor(Colors.button_hover),
+            btn_press=tm.getColor(Colors.button_press)
+        )
+        self.add_new_master_server.setMaximumWidth(32)
+        self.add_new_master_server.setToolTip("Add new master server")
+
         self.refresh_btn = ButtonWithIcon(
             icon_name="refresh.svg",
             icon_type="icons",
@@ -27,10 +38,11 @@ class UiServersList(object):
             btn_press=tm.getColor(Colors.button_press)
         )
         self.refresh_btn.setMaximumWidth(32)
+        self.refresh_btn.setToolTip("Update server list")
 
         self.small_horizontal_layout.addWidget(self.label)
+        self.small_horizontal_layout.addWidget(self.add_new_master_server)
         self.small_horizontal_layout.addWidget(self.refresh_btn)
-
 
         self.table = ServersTable(
             radius=8,
