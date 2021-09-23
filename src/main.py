@@ -22,6 +22,13 @@ class MainWindow(QMainWindow):
         self.ui = UIMainWindow()
         self.ui.setup_ui(self)
 
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(40)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor(0, 0, 0, 60))
+        self.ui.central_frame.setGraphicsEffect(self.shadow)
+
         WidgetsProvider.initStatusBar(self.ui.bottom_status_left)
 
         self.handle_buttons()
