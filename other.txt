@@ -1,0 +1,6 @@
+python -m nuitka --plugin-enable=pyside6 --include-data-file=.\src\resources\*=resources\ --onefile .\src\main.py
+nuitka main.py --standalone --plugin-enable=qt-plugins --include-qt-plugins=sensible,styles --windows-disable-console
+
+https://github.com/Nuitka/Nuitka#id40 возможная проблема
+
+python -m nuitka --plugin-enable=pyside6 --include-data-dir=src/resources=resources --windows-icon-from-ico=src/icon.ico --standalone --onefile .\src\main.py

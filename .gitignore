@@ -13,3 +13,7 @@ dist
 env
 main.spec
 SkyMP Luncher.spec
+
+# nuitka build files
+*.exe
+main.*/

@@ -54,8 +54,7 @@
                     "value": "./src/main.py",
                     "quoting": "weak"
                 }
-
             ]
-        }
+        },
     ]
 }
