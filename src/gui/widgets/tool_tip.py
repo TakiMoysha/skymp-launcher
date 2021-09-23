@@ -1,6 +1,6 @@
 from qt_core import *
 
-class ToolTip(QLabel):
+class CustomToolTip(QLabel):
     style_tooltip = """
     QLabel {{
         background-color: {dark_one};

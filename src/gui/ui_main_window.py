@@ -10,7 +10,7 @@ from gui.ui.ui_pages import UiApplicationPages
 
 from utils import norm_resource_path
 
-class UIMainWindow(object):
+class UiMainWindow(object):
     def setup_ui(self, parent):
         if not parent.objectName():
             parent.setObjectName("MainWindow")

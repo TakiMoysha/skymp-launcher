@@ -1,6 +1,6 @@
 from qt_core import *
 
-from gui.ui_sys_buttons import Ui_SysButtons
+from gui.ui_sys_buttons import UiSysButtons
 
 class UiTitleBar(QWidget):
 
@@ -18,7 +18,7 @@ class UiTitleBar(QWidget):
         )
 
         self.sys_buttons = QWidget()
-        self.ui_sys_buttons = Ui_SysButtons()
+        self.ui_sys_buttons = UiSysButtons()
         self.ui_sys_buttons.setupUi(self.sys_buttons)
 
         self.title_bar_layout.addWidget(self.label)
@@ -29,7 +29,6 @@ class UiTitleBar(QWidget):
 
     def mouseDoubleClickEvent(self, event: QMouseEvent):
         super().mouseDoubleClickEvent(event)
-        print("asdf")
 
 
     def moveWindow(self, mouse_pos):

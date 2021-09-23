@@ -4,7 +4,7 @@ import sys
 from qt_core import *
 from settings import *
 
-from gui.ui_main_window import UIMainWindow
+from gui.ui_main_window import UiMainWindow
 from gui.widgets.push_button import PushButton
 from gui.utils.dialog import getExistingDirectoryByFileDialog
 from gui.widgets.notification_box import NotificationBox
@@ -19,7 +19,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(APPLICATION_NAME)
         self.settings = Settings()
 
-        self.ui = UIMainWindow()
+        self.ui = UiMainWindow()
         self.ui.setup_ui(self)
 
         self.shadow = QGraphicsDropShadowEffect(self)

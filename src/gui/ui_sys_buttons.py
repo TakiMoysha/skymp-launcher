@@ -4,7 +4,7 @@ from qt_core import *
 
 from gui.widgets.title_bar_button import TitleBarButton
 
-class Ui_SysButtons(QWidget):
+class UiSysButtons(QWidget):
     def setupUi(self, parent: QWidget):
         if not parent.objectName():
             parent.setObjectName(u"horizontalLayoutButtons")
