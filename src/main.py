@@ -1,4 +1,3 @@
-
 import sys
 
 from qt_core import *

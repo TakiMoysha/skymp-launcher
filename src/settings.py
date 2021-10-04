@@ -10,7 +10,7 @@ APPLICATION_NAME = "SkyMp"
 QCoreApplication.setOrganizationDomain(ORGANIZATION_DOMAIN)
 QCoreApplication.setApplicationName(APPLICATION_NAME)
 
-class Settings(MainWindow):
+class Settings:
     master_servers_list = ["skymp-auth.herokuapp.com", "skyrim-multiplayer.herokuapp.com"]
 
     class SettingsAttribute(enum.Enum):
