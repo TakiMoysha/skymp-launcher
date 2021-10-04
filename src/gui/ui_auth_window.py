@@ -1,4 +1,5 @@
 from qt_core import *
+from settings import *
 
 from gui.widgets.button_with_icon import ButtonWithIcon
 from gui.ui_auth_window_style import combo_box_style, line_edit_style
@@ -14,6 +15,7 @@ class UiAuthWindow():
         Form.setStyleSheet(u"QFrame {\n"
 "}")
         tm = ThemeManager()
+        settings_app = Settings()
 
         self.frame = QFrame(Form)
         self.frame.setObjectName(u"frame")
@@ -31,8 +33,8 @@ class UiAuthWindow():
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.master_server_combo_box = QComboBox(self.verticalLayoutWidget)
         self.master_server_combo_box.setObjectName(u"master_server_combo_box")
-        self.master_server_combo_box.addItem("master-server1")
-        self.master_server_combo_box.addItem("master-server2")
+        items = settings_app.getValue(Settings.SettingsAttribute.master_servers)
+        self.master_server_combo_box.addItems(items)
         self.master_server_combo_box.setMinimumHeight(16)
         self.master_server_combo_box.setCursor(Qt.PointingHandCursor)
         image_arrow_path = norm_resource_path("./resources/icons/drop-down-arrow.svg")
@@ -46,13 +48,15 @@ class UiAuthWindow():
 
         self.verticalLayout_2.addWidget(self.master_server_combo_box)
 
-        self.email_line_edit = QLineEdit(self.verticalLayoutWidget)
-        self.email_line_edit.setObjectName(u"email_line_edit")
         font = QFont()
         font.setPointSize(10)
+
+        self.email_line_edit = QLineEdit(self.verticalLayoutWidget)
+        self.email_line_edit.setObjectName(u"email_line_edit")
         self.email_line_edit.setFont(font)
         self.email_line_edit.setEchoMode(QLineEdit.Normal)
         self.email_line_edit.setPlaceholderText("Email")
+        self.email_line_edit.setMinimumHeight(24)
         self.email_line_edit.setStyleSheet(line_edit_style.format(
             text_color=tm.getColor(Colors.text),
             background_color=tm.getColor(Colors.background_light),
@@ -67,6 +71,7 @@ class UiAuthWindow():
         self.password_line_edit.setInputMethodHints(Qt.ImhHiddenText|Qt.ImhNoAutoUppercase|Qt.ImhNoPredictiveText|Qt.ImhSensitiveData)
         self.password_line_edit.setEchoMode(QLineEdit.Password)
         self.password_line_edit.setPlaceholderText("Password")
+        self.password_line_edit.setMinimumHeight(24)
         self.password_line_edit.setStyleSheet(line_edit_style.format(
             text_color=tm.getColor(Colors.text),
             background_color=tm.getColor(Colors.background_light),
@@ -77,18 +82,43 @@ class UiAuthWindow():
 
         self.remember_me_box = QCheckBox(self.verticalLayoutWidget)
         self.remember_me_box.setObjectName(u"remember_me_box")
+        self.remember_me_box.setStyleSheet(f"""
+            QCheckBox {{
+                color: {tm.getColor(Colors.text)}
+            }}
+        """)
 
         self.verticalLayout_2.addWidget(self.remember_me_box)
 
-        self.login_button = QPushButton(self.verticalLayoutWidget)
+        self.login_button = ButtonWithIcon(
+            text_color=tm.getColor(Colors.text),
+            btn_color=tm.getColor(Colors.button),
+            btn_hover=tm.getColor(Colors.button_hover),
+            btn_press=tm.getColor(Colors.button_press)
+        )
         self.login_button.setObjectName(u"login_button")
 
         self.verticalLayout_2.addWidget(self.login_button)
 
-        self.forgot_password_button = QPushButton(self.verticalLayoutWidget)
+        self.forgot_password_button = ButtonWithIcon(
+            text_color=tm.getColor(Colors.text),
+            btn_color=tm.getColor(Colors.button),
+            btn_hover=tm.getColor(Colors.button_hover),
+            btn_press=tm.getColor(Colors.button_press)
+        )
         self.forgot_password_button.setObjectName(u"forgot_password_button")
 
         self.verticalLayout_2.addWidget(self.forgot_password_button)
+
+        self.registration_button = ButtonWithIcon(
+            text_color=tm.getColor(Colors.text),
+            btn_color=tm.getColor(Colors.button),
+            btn_hover=tm.getColor(Colors.button_hover),
+            btn_press=tm.getColor(Colors.button_press)
+        )
+        self.registration_button.setObjectName(u"registration_button")
+
+        self.verticalLayout_2.addWidget(self.registration_button)
 
         self.image = QLabel(self.frame)
         self.image.setObjectName(u"image")
@@ -142,9 +172,10 @@ class UiAuthWindow():
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
-        self.remember_me_box.setText(QCoreApplication.translate("Form", u"CheckBox", None))
-        self.login_button.setText(QCoreApplication.translate("Form", u"PushButton", None))
-        self.forgot_password_button.setText(QCoreApplication.translate("Form", u"PushButton", None))
+        self.remember_me_box.setText(QCoreApplication.translate("Form", u"Remember me", None))
+        self.login_button.setText(QCoreApplication.translate("Form", u"Login", None))
+        self.forgot_password_button.setText(QCoreApplication.translate("Form", u"Forgot password", None))
+        self.registration_button.setText(QCoreApplication.translate("Form", u"Registration", None))
         self.label.setText(QCoreApplication.translate("Form", u"Sign In", None))
     # retranslateUi
 

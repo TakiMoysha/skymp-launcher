@@ -1,9 +1,10 @@
-from gui.widgets.button_with_icon import ButtonWithIcon
 from qt_core import *
+from settings import *
 
-from controllers.theme_manager import ThemeManager, Colors
-from gui.widgets.servers_table import ServersTable
 from utils import norm_resource_path
+from gui.widgets.button_with_icon import ButtonWithIcon
+from gui.widgets.servers_table import ServersTable
+from controllers.theme_manager import ThemeManager, Colors
 
 from .ui_servers_list_style import combo_box_style
 
@@ -21,9 +22,6 @@ class UiServersList(object):
 
         self.combo_box_master_servers = QComboBox()
         self.combo_box_master_servers.setObjectName(u"combo_box_master_servers")
-        default_icon = QIcon(norm_resource_path("./resources/icons/default_master_server.svg"))
-        self.combo_box_master_servers.addItem(default_icon, "master-server1")
-        self.combo_box_master_servers.addItem(default_icon, "master-server2")
         self.combo_box_master_servers.setMinimumHeight(32)
         self.combo_box_master_servers.setCursor(Qt.PointingHandCursor)
         image_arrow_path = norm_resource_path("./resources/icons/drop-down-arrow.svg")

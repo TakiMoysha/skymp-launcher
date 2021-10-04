@@ -120,15 +120,15 @@ class MainWindow(QMainWindow):
         """what an edge this is"""
         edge = 0
         x, y = pos.x(), pos.y()
-        Margins = 3
+        size_trigger_box_resize_mod = 3
 
-        if y <= Margins:
+        if y <= size_trigger_box_resize_mod:
             edge |= Qt.TopEdge
-        if x <= Margins:
+        if x <= size_trigger_box_resize_mod:
             edge |= Qt.LeftEdge
-        if x >= self.width() - Margins:
+        if x >= self.width() - size_trigger_box_resize_mod:
             edge |= Qt.RightEdge
-        if y >= self.height() - Margins:
+        if y >= self.height() - size_trigger_box_resize_mod:
             edge |= Qt.BottomEdge
 
         return edge
@@ -197,7 +197,7 @@ class MainWindow(QMainWindow):
                 path_to_skyrim
             )
             self.settings.saveValue(
-                Settings.SettingsType.skyrim_path,
+                Settings.SettingsAttribute.skyrim_path,
                 path_to_skyrim
             )
         else:
@@ -208,7 +208,10 @@ class MainWindow(QMainWindow):
 
     def loadSettings(self):
         self.ui.ui_pages.ui_page_settings.pathToSkyrimFolder.setText(
-            self.settings.getValue(Settings.SettingsType.skyrim_path, "")
+            self.settings.getValue(Settings.SettingsAttribute.skyrim_path, "")
+        )
+        self.ui.ui_pages.ui_page_home.ui_servers_list.combo_box_master_servers.addItems(
+            self.settings.getValue(Settings.SettingsAttribute.master_servers)
         )
 
 if __name__ == '__main__':

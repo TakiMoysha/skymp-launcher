@@ -40,3 +40,43 @@ QListView {{
     border-radius: 8px;
 }}
 '''
+
+'''
+QComboBox#changeTime {
+    background:#0b1d2c;
+    border:0px;
+    color:white;
+    outline: none;
+    padding-left:5px;
+   }
+   QComboBox::drop-down {
+
+        border:0px;
+        margin-right:10px;
+
+    }
+
+    QComboBox#changeTime:pressed {
+        background: #0b1d2c;
+    }
+    QComboBox#changeTime:focus:pressed {
+        background: #003750;
+     }
+    QComboBox#changeTime:focus {
+        background: #0b1d2c;
+    }
+    QComboBox#changeTime:hover {
+         background: #003750;
+    }
+
+    QComboBox#changeTime:checked {
+       background: #0b1d2c;
+    }
+    QComboBox#changeTime:checked:hover {
+        background: #002d3;
+ }
+QComboBox#changeTime:disabled {
+    background: #0a2634;
+	color:gray;
+ }
+'''

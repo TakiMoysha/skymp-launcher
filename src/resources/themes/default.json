@@ -7,8 +7,8 @@
     "background": "#282A36",
     "background_dark": "#191A21",
     "background_light": "#343746",
-    "button": "#344d2a",
-    "button_hover": "#274138",
-    "button_press": "#35522f",
+    "button": "#32607e",
+    "button_hover": "#203664",
+    "button_press": "#32607e83",
     "debug": "#960303"
 }
