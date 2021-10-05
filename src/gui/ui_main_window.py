@@ -6,7 +6,7 @@ from gui.ui_title_bar import UiTitleBar
 
 from controllers.theme_manager import ThemeManager, Colors
 
-from gui.ui.ui_pages import UiApplicationPages
+from gui.ui_components.ui_pages import UiApplicationPages
 
 from utils import norm_resource_path
 
