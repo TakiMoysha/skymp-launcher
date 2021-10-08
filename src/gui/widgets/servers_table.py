@@ -58,6 +58,8 @@ class ServersTable(QTableView):
         self.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeToContents)
         self.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeToContents)
 
+        self.setShowGrid(False)
+
         self.update(servers_tuple)
 
         self.set_style(

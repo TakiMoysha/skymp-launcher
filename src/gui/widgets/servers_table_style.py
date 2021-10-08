@@ -7,13 +7,12 @@ ServersTable {{
     gridline-color: {transparent};
     color: {color};
     font: {text_font};
+
 }}
 ServersTable::item {{
     padding-left: 5px;
     padding-right: 5px;
     border-style: solid;
-    gridline-color: {transparent};
-    gridline-color: red;
 }}
 ServersTable::item:selected {{
     background-color: {selection_color};
