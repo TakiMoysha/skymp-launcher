@@ -22,8 +22,6 @@ class AuthWindow(QWidget):
         self.ui.exit_button.clicked.connect(lambda: self.close())
         self.ui.frame.mouseMoveEvent = self.moveWindow
 
-        self.show()
-
     def moveWindow(self, event):
         self.windowHandle().startSystemMove()
 
@@ -31,5 +29,6 @@ class AuthWindow(QWidget):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = AuthWindow()
+    window.show()
 
     sys.exit(app.exec())

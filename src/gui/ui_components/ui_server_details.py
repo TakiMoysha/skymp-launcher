@@ -1,6 +1,11 @@
-from controllers.theme_manager import Colors, ThemeManager
-from gui.widgets.server_tab_widget import ServerDetailsTabWidget
 from qt_core import *
+
+from auth_window import AuthWindow
+
+from gui.widgets.server_tab_widget import ServerDetailsTabWidget
+
+from controllers.server_details import filesInstalled
+from controllers.theme_manager import Colors, ThemeManager
 
 class UiServerDetails(object):
     def setupUi(self, parent_page):
@@ -67,9 +72,9 @@ class UiServerDetails(object):
 
         self.gridLayout.addWidget(self.tabWidget, 2, 0, 1, 2)
 
-        self.main_button = QPushButton()
-        self.main_button.setObjectName(u"main_button")
-        self.main_button.setStyleSheet(u"QPushButton {{\n"
+        self.play_button = QPushButton()
+        self.play_button.setObjectName(u"main_button")
+        self.play_button.setStyleSheet(u"QPushButton {{\n"
 "                color: red;\n"
 "                background-color: blue;\n"
 "                padding-left: 20px;\n"
@@ -81,8 +86,9 @@ class UiServerDetails(object):
 "                background-color: blue;\n"
 "            }}")
 
-        self.gridLayout.addWidget(self.main_button, 3, 0, 1, 2)
+        self.gridLayout.addWidget(self.play_button, 3, 0, 1, 2)
 
+        self.setupButtons()
 
         self.retranslateUi(parent_page)
 
@@ -98,5 +104,24 @@ class UiServerDetails(object):
         self.server_address.setText(QCoreApplication.translate("parent_page", u"ServerAddress", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.description), QCoreApplication.translate("parent_page", u"Details", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.mods), QCoreApplication.translate("parent_page", u"Mods", None))
-        self.main_button.setText(QCoreApplication.translate("parent_page", u"Play", None))
+        self.play_button.setText(QCoreApplication.translate("parent_page", u"Play", None))
     # retranslateUi
+
+
+    def setupButtons(self):
+        self.play_button.clicked.connect(self.playClick)
+
+
+    def playClick(self):
+        if not self._isUserAuth():
+            auth_window = AuthWindow()
+            auth_window.setWindowModality(Qt.ApplicationModal)
+            auth_window.show()
+        elif not filesInstalled():
+            pass
+        else:
+            pass
+
+
+    def _isUserAuth(self):
+        return False

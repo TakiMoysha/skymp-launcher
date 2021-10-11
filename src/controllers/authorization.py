@@ -1,10 +1,15 @@
-from model.auth.auth_model import AuthModel
-from model.auth.reg_model import RegModel
-from model.auth.rec_pswrd_model import RecPswrdModel
+
+def login():
+    pass
 
 
-class Authorization:
-    def __init__(self):
-        self.auth_model = AuthModel()
-        self.reg_model = RegModel()
-        self.pswrd_model = RecPswrdModel()
+def logout():
+    pass
+
+
+def registration():
+    pass
+
+
+def reset_password():
+    pass

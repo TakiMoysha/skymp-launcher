@@ -1,29 +1,31 @@
 import enum
 
-from main import *
 from qt_core import *
 
 ORGANIZATION_NAME = "REDHOUSE"
 ORGANIZATION_DOMAIN = "REDHOUSE"
-APPLICATION_NAME = "SkyMp"
+APPLICATION_NAME = "SkyLauncher"
 
 QCoreApplication.setOrganizationDomain(ORGANIZATION_DOMAIN)
 QCoreApplication.setApplicationName(APPLICATION_NAME)
 
+class SettingsAttribute(enum.Enum):
+    skyrim_path = "skyrim_path"
+    theme = "theme"
+    remember_account = "remember_account"
+
+    master_servers = "master_servers"
+    last_master_server = "last_master_server"
+    last_game_server = "last_game_server"
+
+
 class Settings:
     master_servers_list = ["skymp-auth.herokuapp.com", "skyrim-multiplayer.herokuapp.com"]
 
-    class SettingsAttribute(enum.Enum):
-        skyrim_path = "skyrim_path"
-        theme = "theme"
-        master_servers = "master_servers"
-
-
     def __init__(self):
         self.qsettings = QSettings()
-        master_servers_list = self.getValue(Settings.SettingsAttribute.master_servers)
-        if (master_servers_list == None):
-            self.saveValue(Settings.SettingsAttribute.master_servers, Settings.master_servers_list)
+        if (self.getValue(SettingsAttribute.master_servers) == None):
+            self.saveValue(SettingsAttribute.master_servers, Settings.master_servers_list)
 
 
     def saveValue(self, key: SettingsAttribute, value: any):

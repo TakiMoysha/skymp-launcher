@@ -3,6 +3,9 @@ from qt_core import *
 from gui.ui_components.ui_server_details import UiServerDetails
 from gui.ui_components.ui_servers_list import UiServersList
 
+from controllers.server_details import get_details_by_server_name
+
+
 class UiPageMain(object):
     def setupUi(self, app_page):
         if not app_page.objectName():
@@ -31,7 +34,27 @@ class UiPageMain(object):
         self.horizontal_layout.addWidget(self.server_descriptions)
         self.horizontal_layout.addWidget(self.servers_list)
 
+        self.setupButtons()
+
         QMetaObject.connectSlotsByName(app_page)
+
+
+    def setupButtons(self):
+        self.ui_servers_list.table.selectionModel().selectionChanged.connect(
+            self.updateGameServerDetails
+        )
+
+
+    def updateGameServerDetails(self, selected: QItemSelection, deselected: QItemSelection):
+        name_game_server = selected.indexes()[0].data()
+        server_details = get_details_by_server_name(name_game_server)
+        server_logo = server_details.get('logo')
+        server_name = server_details.get('name')
+        server_address = server_details.get('address')
+        server_desc = server_details.get('desc')
+        server_mods = server_details.get('mods')
+
+
 
     # def retranslateUi(self, application_pages):
     #     application_pages.setWindowTitle(

@@ -76,12 +76,6 @@ class UiServersList(object):
         self.refresh_btn.clicked.connect(
             lambda: self.refreshGameServers()
         )
-        self.table.selectionModel().selectionChanged.connect(
-            self.updateGameServerDetails
-        )
-
-    def updateGameServerDetails(self, selected: QItemSelection, deselected: QItemSelection):
-        index_game_server = selected.indexes()[0].row()
 
 
     def refreshGameServers(self):

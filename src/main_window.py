@@ -30,12 +30,10 @@ class MainWindow(QMainWindow):
 
         WidgetsProvider.initStatusBar(self.ui.bottom_status_left)
 
-        self.handle_buttons()
+        self.setupButtons()
 
         UIFunctions.removeDefaultTitleBar(self)
         self.setMouseTracking(True)
-
-        self.settingsPageInitButtons()
 
         self.loadSettings()
         self.show()
@@ -81,7 +79,7 @@ class MainWindow(QMainWindow):
         return False
 
 #
-    def handle_buttons(self):
+    def setupButtons(self):
         self.ui.ui_title_bar.ui_sys_buttons.button_minimize.clicked.connect(
             lambda: self.setWindowState(Qt.WindowMinimized)
         )
@@ -100,6 +98,10 @@ class MainWindow(QMainWindow):
         self.ui.home_button.clicked.connect(self.showPageHome)
         self.ui.btn_2.clicked.connect(self.showPage2)
         self.ui.settings_button.clicked.connect(self.showPageSettings)
+        self.ui.ui_pages.ui_page_settings.openSkyrimFolder.clicked.connect(
+            lambda: self.setupSkyrimDir()
+        )
+
 
 
 # Functions
@@ -174,15 +176,10 @@ class MainWindow(QMainWindow):
         self.ui.pages.setCurrentWidget(self.ui.ui_pages.page_settings)
         self.ui.settings_button.setActive(True)
 
+
     def resetSelection(self):
         for btn in self.ui.left_menu.findChildren(PushButton):
             btn.setActive(False)
-
-
-    def settingsPageInitButtons(self):
-        self.ui.ui_pages.ui_page_settings.openSkyrimFolder.clicked.connect(
-            lambda: self.setupSkyrimDir()
-        )
 
 
     def setupSkyrimDir(self):
@@ -196,7 +193,7 @@ class MainWindow(QMainWindow):
                 path_to_skyrim
             )
             self.settings.saveValue(
-                Settings.SettingsAttribute.skyrim_path,
+                SettingsAttribute.skyrim_path,
                 path_to_skyrim
             )
         else:
@@ -205,13 +202,15 @@ class MainWindow(QMainWindow):
                 text = "Its not valid path to Skyrim"
             )
 
+
     def loadSettings(self):
         self.ui.ui_pages.ui_page_settings.pathToSkyrimFolder.setText(
-            self.settings.getValue(Settings.SettingsAttribute.skyrim_path, "")
+            self.settings.getValue(SettingsAttribute.skyrim_path, "")
         )
         self.ui.ui_pages.ui_page_home.ui_servers_list.combo_box_master_servers.addItems(
-            self.settings.getValue(Settings.SettingsAttribute.master_servers)
+            self.settings.getValue(SettingsAttribute.master_servers)
         )
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
