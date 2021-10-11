@@ -1,6 +1,6 @@
 from qt_core import *
 
-from gui.ui_components.ui_server_descriptions import UiServerDescriptions
+from gui.ui_components.ui_server_details import UiServerDetails
 from gui.ui_components.ui_servers_list import UiServersList
 
 class UiPageMain(object):
@@ -13,7 +13,7 @@ class UiPageMain(object):
 
         self.server_descriptions = QWidget()
         self.server_descriptions.setObjectName(u"server_descriptions")
-        self.ui_server_descriptions = UiServerDescriptions()
+        self.ui_server_descriptions = UiServerDetails()
         self.ui_server_descriptions.setupUi(self.server_descriptions)
         size_policy_descriptions = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         size_policy_descriptions.setHorizontalStretch(1)
@@ -32,7 +32,6 @@ class UiPageMain(object):
         self.horizontal_layout.addWidget(self.servers_list)
 
         QMetaObject.connectSlotsByName(app_page)
-
 
     # def retranslateUi(self, application_pages):
     #     application_pages.setWindowTitle(

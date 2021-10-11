@@ -1,6 +1,7 @@
 from qt_core import *
 
 from .servers_table_style import style as servers_table_style
+from controllers.servers_table import get_active_game_servers
 
 class ServersTable(QTableView):
     def __init__(
@@ -13,6 +14,7 @@ class ServersTable(QTableView):
         selection_color="#000",
         transparent="#00000000",
         header_background="#000000",
+        item_hover_color="#000000ff",
         text_font="9pt 'Segoe UI'"
     ):
         super().__init__()
@@ -21,29 +23,7 @@ class ServersTable(QTableView):
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.verticalHeader().hide()
 
-        #! for tests
-        js_list = [
-            {"name":"[RP] Legacy of the Dragons","ping":50,"online":"12/100"},
-            {"name":"[RP] Legacy of the Dragons","ping":50,"online":"23/100"},
-            {"name":"[RP] Legacy of the Dragons","ping":50,"online":"12/100"},
-            {"name":"[RP] Legacy of the Dragons","ping":50,"online":"12/100"},
-            {"name":"[RP] Legacy of the Dragons","ping":50,"online":"12/100"},
-            {"name":"[RP] Legacy of the Dragons","ping":50,"online":"12/100"},
-            {"name":"[RP] Legacy of the Dragons","ping":50,"online":"12/100"},
-            {"name":"Hearthfire RP","ping":100,"online":"120/1000"}
-        ]
-
-        def dictToList(dict):
-            lst = list()
-            for value in dict.values():
-                lst.append(value)
-
-            return lst
-
-
-        servers_tuple = list()
-        for i in js_list:
-            servers_tuple.append(dictToList(i))
+        self.game_server_changed = SignalInstance()
 
         self.serversTableModel = ServersTableModel(self)
 
@@ -60,19 +40,27 @@ class ServersTable(QTableView):
 
         self.setShowGrid(False)
 
-        self.update(servers_tuple)
-
         self.set_style(
-            radius=radius,
             color=color,
+            radius=radius,
             bg_color=bg_color,
+            text_font=text_font,
+            transparent=transparent,
             border_color=border_color,
             context_color=context_color,
             selection_color=selection_color,
-            transparent=transparent,
+            item_hover_color=item_hover_color,
             header_background=header_background,
-            text_font=text_font
         )
+
+
+    def selectionChanged(self, selected: QItemSelection, deselected: QItemSelection) -> None:
+        # self.emit(SIGNAL(self.test_func(selected)))
+        return super().selectionChanged(selected, deselected)
+
+
+    # def test_func(self, selected: QItemSelection):
+    #     print("test_func")
 
 
     def set_style(
@@ -85,7 +73,8 @@ class ServersTable(QTableView):
         selection_color,
         transparent,
         header_background,
-        text_font
+        text_font,
+        item_hover_color
     ):
         style = servers_table_style.format(
             color=color,
@@ -96,13 +85,15 @@ class ServersTable(QTableView):
             border_color=border_color,
             context_color=context_color,
             selection_color=selection_color,
-            header_background=header_background
+            item_hover_color=item_hover_color,
+            header_background=header_background,
         )
         self.setStyleSheet(style)
 
 
-    def update(self, new_list: tuple):
-        self.serversTableModel.updateData(new_list)
+    def updateGameServersList(self, master_server):
+        game_servers_list = get_active_game_servers(master_server)
+        self.serversTableModel.updateData(game_servers_list)
 
 
 class HorizontalHeader(QHeaderView):
@@ -132,6 +123,7 @@ class ServersTableModel(QAbstractTableModel):
     def headerData(self, section: int, orientation: Qt.Orientation, role: int):
         if role == Qt.DisplayRole and orientation == Qt.Horizontal:
             return self.COLUMNS_ID[section]
+        # table.horizontalHeaderItem(0).setIcon("qrc://path/to/icon.png")
         return super().headerData(section, orientation, role=role)
 
 

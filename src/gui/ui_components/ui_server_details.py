@@ -1,11 +1,11 @@
 from controllers.theme_manager import Colors, ThemeManager
-from gui.widgets.server_tab_widget import ServerTabWidget
+from gui.widgets.server_tab_widget import ServerDetailsTabWidget
 from qt_core import *
 
-class UiServerDescriptions(object):
+class UiServerDetails(object):
     def setupUi(self, parent_page):
         if not parent_page.objectName():
-            parent_page.setObjectName(u"server_descri")
+            parent_page.setObjectName(u"server_details")
 
         self.gridLayout = QGridLayout(parent_page)
         self.gridLayout.setObjectName(u"gridLayout")
@@ -40,29 +40,30 @@ class UiServerDescriptions(object):
 
         self.gridLayout.addWidget(self.server_address, 1, 1, 1, 1)
 
-        self.tabWidget = ServerTabWidget()
+        self.tabWidget = ServerDetailsTabWidget()
         self.tabWidget.setObjectName(u"tabWidget")
 
-        self.Description = QWidget()
-        self.Description.setObjectName(u"Description")
-        self.verticalLayout = QVBoxLayout(self.Description)
+        self.description = QWidget()
+        self.description.setObjectName(u"description")
+        self.verticalLayout = QVBoxLayout(self.description)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.textBrowser = QTextBrowser(self.Description)
+        self.textBrowser = QListView(self.description)
         self.textBrowser.setObjectName(u"textBrowser")
 
         self.verticalLayout.addWidget(self.textBrowser)
 
-        self.tabWidget.addTab(self.Description, "")
-        self.Mods = QWidget()
-        self.Mods.setObjectName(u"Mods")
-        self.horizontalLayout = QHBoxLayout(self.Mods)
+        self.tabWidget.addTab(self.description, "")
+        self.mods = QWidget()
+        self.mods.setObjectName(u"mods")
+        self.horizontalLayout = QHBoxLayout(self.mods)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.server_mods_list = QListView(self.Mods)
+        self.server_mods_list = QListWidget(self.mods)
         self.server_mods_list.setObjectName(u"server_mods_list")
+        self.server_mods_list.addItems(["asdf", "123"])
 
         self.horizontalLayout.addWidget(self.server_mods_list)
 
-        self.tabWidget.addTab(self.Mods, "")
+        self.tabWidget.addTab(self.mods, "")
 
         self.gridLayout.addWidget(self.tabWidget, 2, 0, 1, 2)
 
@@ -92,10 +93,10 @@ class UiServerDescriptions(object):
 
     def retranslateUi(self, parent_page):
         parent_page.setWindowTitle(QCoreApplication.translate("parent_page", u"parent_page", None))
-        self.server_icon.setText(QCoreApplication.translate("parent_page", u"TextLabel", None))
-        self.server_name.setText(QCoreApplication.translate("parent_page", u"TextLabel", None))
-        self.server_address.setText(QCoreApplication.translate("parent_page", u"TextLabel", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.Description), QCoreApplication.translate("parent_page", u"Tab 1", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.Mods), QCoreApplication.translate("parent_page", u"Tab 2", None))
+        self.server_icon.setText(QCoreApplication.translate("parent_page", u"Icon", None))
+        self.server_name.setText(QCoreApplication.translate("parent_page", u"ServerName", None))
+        self.server_address.setText(QCoreApplication.translate("parent_page", u"ServerAddress", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.description), QCoreApplication.translate("parent_page", u"Details", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.mods), QCoreApplication.translate("parent_page", u"Mods", None))
         self.main_button.setText(QCoreApplication.translate("parent_page", u"Play", None))
     # retranslateUi

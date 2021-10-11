@@ -1,5 +1,5 @@
 from qt_core import *
-from main import *
+from main_window import *
 
 class UIFunctions():
     def removeDefaultTitleBar(self):

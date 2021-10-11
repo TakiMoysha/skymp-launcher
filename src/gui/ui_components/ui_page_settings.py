@@ -69,6 +69,7 @@ class UiPageSettings(object):
         QMetaObject.connectSlotsByName(Frame)
     # setupUi
 
+
     def retranslateUi(self, Frame):
         Frame.setWindowTitle(QCoreApplication.translate("PageSettings", u"Settings", None))
         self.label.setText(QCoreApplication.translate("PageSettings", u"Path to Skyrim:", None))

@@ -21,6 +21,7 @@ class UiAuthWindow():
         self.frame.setObjectName(u"frame")
         self.frame.setGeometry(QRect(10, 10, 401, 451))
         self.frame.setStyleSheet(f"""QFrame {{
+            outline: none;
             background-color: {tm.getColor(Colors.background)};
             border-radius: 8px;
         }}""")
@@ -33,7 +34,7 @@ class UiAuthWindow():
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.master_server_combo_box = QComboBox(self.verticalLayoutWidget)
         self.master_server_combo_box.setObjectName(u"master_server_combo_box")
-        items = settings_app.getValue(Settings.SettingsAttribute.master_servers)
+        items = settings_app.getValue(SettingsAttribute.master_servers)
         self.master_server_combo_box.addItems(items)
         self.master_server_combo_box.setMinimumHeight(16)
         self.master_server_combo_box.setCursor(Qt.PointingHandCursor)

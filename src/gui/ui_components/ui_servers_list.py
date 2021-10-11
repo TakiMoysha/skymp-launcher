@@ -1,5 +1,4 @@
 from qt_core import *
-from settings import *
 
 from utils import norm_resource_path
 from gui.widgets.button_with_icon import ButtonWithIcon
@@ -68,11 +67,23 @@ class UiServersList(object):
         self.vertical_layout.addLayout(self.small_horizontal_layout)
         self.vertical_layout.addWidget(self.table)
 
-        self.handel_buttons()
+        self.setupButtons()
+
         QMetaObject.connectSlotsByName(parent_page)
 
-    def handel_buttons(self):
-        servers_tuple: tuple = tuple()
+
+    def setupButtons(self):
         self.refresh_btn.clicked.connect(
-            lambda: self.table.update(servers_tuple)
+            lambda: self.refreshGameServers()
         )
+        self.table.selectionModel().selectionChanged.connect(
+            self.updateGameServerDetails
+        )
+
+    def updateGameServerDetails(self, selected: QItemSelection, deselected: QItemSelection):
+        index_game_server = selected.indexes()[0].row()
+
+
+    def refreshGameServers(self):
+        master_server = self.combo_box_master_servers.currentText()
+        self.table.updateGameServersList(master_server)

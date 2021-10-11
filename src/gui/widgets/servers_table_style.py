@@ -7,7 +7,6 @@ ServersTable {{
     gridline-color: {transparent};
     color: {color};
     font: {text_font};
-
 }}
 ServersTable::item {{
     padding-left: 5px;
