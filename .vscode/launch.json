@@ -8,7 +8,7 @@
             "name": "Python: Debug App",
             "type": "python",
             "request": "launch",
-            "program": "./main.py",
+            "program": "./main_window.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}/src",
             "pythonArgs": [
