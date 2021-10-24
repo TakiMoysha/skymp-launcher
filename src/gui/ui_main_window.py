@@ -157,7 +157,7 @@ class UiMainWindow(object):
             QSizePolicy.Minimum
         )
 
-        self.bottom_label_right = QLabel("| RED HOUSE")
+        self.bottom_label_right = QLabel("| TakiMoysha")
         self.bottom_label_right.setStyleSheet("font: 700 9pt 'Segoe UI'")
 
         self.bottom_right_size_grip = QSizeGrip(self.bottom_bar)

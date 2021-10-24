@@ -32,6 +32,7 @@ class UiAuthWindow():
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+
         self.master_server_combo_box = QComboBox(self.verticalLayoutWidget)
         self.master_server_combo_box.setObjectName(u"master_server_combo_box")
         items = settings_app.getValue(SettingsAttribute.master_servers)
@@ -165,7 +166,6 @@ class UiAuthWindow():
 
         self.horizontalLayout.addWidget(self.exit_button)
 
-
         self.retranslateUi(Form)
 
         QMetaObject.connectSlotsByName(Form)
@@ -180,3 +180,37 @@ class UiAuthWindow():
         self.label.setText(QCoreApplication.translate("Form", u"Sign In", None))
     # retranslateUi
 
+
+    def setCorrectEmailStyle(self):
+        tm = ThemeManager()
+        self.email_line_edit.setStyleSheet(line_edit_style.format(
+            text_color=tm.getColor(Colors.text),
+            background_color=tm.getColor(Colors.background_light),
+            border_color=tm.getColor(Colors.button)
+
+        ))
+
+    def setUncorrectEmailStyle(self):
+        tm = ThemeManager()
+        self.email_line_edit.setStyleSheet(line_edit_style.format(
+            text_color='red',
+            background_color=tm.getColor(Colors.background_light),
+            border_color=tm.getColor(Colors.button)
+        ))
+
+    def setCorrectPasswordStyle(self):
+        tm = ThemeManager()
+        self.password_line_edit.setStyleSheet(line_edit_style.format(
+            text_color=tm.getColor(Colors.text),
+            background_color=tm.getColor(Colors.background_light),
+            border_color=tm.getColor(Colors.button)
+
+        ))
+
+    def setUncorrectPasswordStyle(self):
+        tm = ThemeManager()
+        self.password_line_edit.setStyleSheet(line_edit_style.format(
+            text_color='red',
+            background_color=tm.getColor(Colors.background_light),
+            border_color=tm.getColor(Colors.button)
+        ))

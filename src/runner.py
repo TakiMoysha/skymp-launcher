@@ -19,6 +19,7 @@ class DialogManager:
     def open(self, name, *args, **kwargs):
         pass
 
+
 class LauncherApplication(QApplication):
     TMOUT = 30000
 
@@ -31,15 +32,9 @@ def _run(argv: Optional[list[str]] = None, exec: bool = True):
     global app
     global mw
 
-    ORGANIZATION_DOMAIN = "REDHOUSE"
-    APPLICATION_NAME = "SkyLauncher"
-
     app = LauncherApplication(sys.argv)
-    window = MainWindow()
+    mw = MainWindow()
     app.setWindowIcon(QIcon("icon.ico"))
-
-    QCoreApplication.setOrganizationDomain(ORGANIZATION_DOMAIN)
-    QCoreApplication.setApplicationName(APPLICATION_NAME)
 
     sys.exit(app.exec())
 

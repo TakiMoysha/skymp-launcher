@@ -30,6 +30,7 @@ def get_details_by_server_name(name: str):
 def filesInstalled():
     return False
 
+
 def wrapper_play(master_server: str, game_server_ip: str, game_server_port: int):
     if not is_user_auth(master_server):
         auth_user()

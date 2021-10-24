@@ -22,6 +22,7 @@ class UiPageMain(object):
         size_policy_descriptions.setHorizontalStretch(1)
         self.server_descriptions.setMinimumWidth(app_page.width() * 0.6)
         self.server_descriptions.setSizePolicy(size_policy_descriptions)
+        self.server_descriptions.setFixedWidth(0)
 
         self.servers_list = QWidget()
         self.servers_list.setObjectName(u"servers_list")
@@ -41,18 +42,30 @@ class UiPageMain(object):
 
     def setupButtons(self):
         self.ui_servers_list.table.selectionModel().selectionChanged.connect(
-            self.updateGameServerDetails
+            self.selectGameServer
         )
 
 
-    def updateGameServerDetails(self, selected: QItemSelection, deselected: QItemSelection):
-        name_game_server = selected.indexes()[0].data()
-        server_details = get_details_by_server_name(name_game_server)
-        server_logo = server_details.get('logo')
-        server_name = server_details.get('name')
-        server_address = server_details.get('address')
-        server_desc = server_details.get('desc')
-        server_mods = server_details.get('mods')
+    def selectGameServer(self, selected: QItemSelection, deselected: QItemSelection):
+        def updateGameServerDetails(selected: QItemSelection, deselected: QItemSelection):
+            name_game_server = selected.indexes()[0].data()
+            server_details = get_details_by_server_name(name_game_server)
+            server_logo = server_details.get('logo')
+            server_name = server_details.get('name')
+            server_address = server_details.get('address')
+            server_desc = server_details.get('desc')
+            server_mods = server_details.get('mods')
+
+        updateGameServerDetails(selected, deselected)
+        maximum_width = 600
+        print(self.server_descriptions.maximumWidth())
+        if (self.server_descriptions.maximumWidth() != maximum_width):
+            self.animation = QPropertyAnimation(self.server_descriptions, b"maximumWidth")
+            self.animation.setStartValue(0)
+            self.animation.setEndValue(maximum_width)
+            self.animation.setDuration(200)
+            self.animation.setEasingCurve(QEasingCurve.Linear)
+            self.animation.start()
 
 
 

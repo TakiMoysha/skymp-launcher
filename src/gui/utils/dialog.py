@@ -9,11 +9,11 @@ def getExistingDirectoryByFileDialog(dir: str):
 
 
 def showCriticalMessage(parent: QWidget, text: str):
-    _showText(parent, text, cupyBtn=True)
+    _showText(parent, text, copyBtn=True)
 
 
 def showWarningMessage(parent: QWidget, text: str):
-    _showText(parent, text, cupyBtn=True)
+    _showText(parent, text, copyBtn=True)
 
 
 def showInfoMessage(parent: QWidget, text: str):
@@ -25,8 +25,8 @@ def _showText(
     txt: str,
     type: str = "text",
     run: bool = True,
-    minWidth: int = 500,
-    minHeight: int = 400,
+    minWidth: int = 200,
+    minHeight: int = 100,
     title: str = "Launcher",
     copyBtn: bool = False,
     plainTextEdit: bool = False,
@@ -50,8 +50,13 @@ def _showText(
         else:
             text.setHtml(txt)
     layout.addWidget(text)
-    box = QDialogButtonBox(QDialogButtonBox.Close)
+    box = QDialogButtonBox()
     layout.addWidget(box)
+    close_button = QPushButton()
+    close_button.setText("Close")
+
+    qconnect(close_button.clicked, lambda: QApplication.exit())
+    box.addButton(close_button)
     if copyBtn:
         def onCopy() -> None:
             QApplication.clipboard().setText(text.toPlainText())
