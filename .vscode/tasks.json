@@ -20,7 +20,7 @@
                 },
                 "--debug=all",
                 {
-                    "value": "./src/main.py",
+                    "value": "./src/runner.py",
                     "quoting": "weak"
                 }
             ]
@@ -51,7 +51,7 @@
                     "quoting": "weak"
                 },
                 {
-                    "value": "./src/main.py",
+                    "value": "./src/runner.py",
                     "quoting": "weak"
                 }
             ]

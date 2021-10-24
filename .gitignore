@@ -11,8 +11,7 @@ dist
 
 # Buil. Assembly is done via tasks vscode
 env
-main.spec
-SkyMP Luncher.spec
+*.spec
 
 # nuitka build files
 *.exe
