@@ -7,8 +7,6 @@ import win32api
 import win32con
 import win32gui
 
-from qt_core import *
-
 # try:
 #     from PyQt5 import QtCore, QtGui, QtWidgets
 #     from PyQt5.QtCore import QTimer, Qt, QEvent, QObject
