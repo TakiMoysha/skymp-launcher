@@ -2,11 +2,11 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "2.0.0",
-    "command": "C:\\Users\\Moyses\\Envs\\pyqt_env\\Scripts\\pyinstaller",
     "tasks": [
         {
             "label": "Debug Build",
             "type": "shell",
+            "command": "C:\\Users\\Moyses\\Envs\\pyqt_env\\Scripts\\pyinstaller",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -28,6 +28,7 @@
         {
             "label": "Production Build",
             "type": "shell",
+            "command": "C:\\Users\\Moyses\\Envs\\pyqt_env\\Scripts\\pyinstaller",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -54,6 +55,32 @@
                     "value": "./src/runner.py",
                     "quoting": "weak"
                 }
+            ]
+        },
+        {
+            "label": "Nuitka Debug Build",
+            "type": "shell",
+            "command": "C:\\Users\\Moyses\\Envs\\pyqt_env\\Scripts\\nuitka",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "args": [
+                "--plugin-enable=pyside6",
+                "--include-data-dir=src/resources=resources/",
+                "--windows-icon-from-ico=src/icon.ico",
+                "--output-dir=./dist",
+                "-o",
+                {
+                    "value": "./dist/nuitka_launcher.exe",
+                    "quoting": "strong"
+                },
+                "--standalone",
+                "--onefile",
+                {
+                    "value": "./src/runner.py",
+                    "quoting": "strong"
+                },
             ]
         },
     ]
