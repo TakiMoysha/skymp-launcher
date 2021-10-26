@@ -1,11 +1,13 @@
 from qt_core import *
 
 from utils import norm_resource_path
-from gui.widgets.button_with_icon import ButtonWithIcon
 from gui.widgets.servers_table import ServersTable
-from controllers.theme_manager import ThemeManager, Colors
+from gui.widgets.button_with_icon import ButtonWithIcon
 
 from .ui_servers_list_style import combo_box_style
+
+from controllers.theme_manager import ThemeManager, Colors
+from controllers.servers_table import WGetActiveGameServers, get_active_game_servers
 
 class UiServersList(object):
     def setupUi(self, parent_page):
@@ -73,11 +75,24 @@ class UiServersList(object):
 
 
     def setupButtons(self):
-        self.refresh_btn.clicked.connect(
-            lambda: self.refreshGameServers()
-        )
+        self.refresh_btn.clicked.connect(self.refreshGameServers)
 
 
     def refreshGameServers(self):
         master_server = self.combo_box_master_servers.currentText()
-        self.table.updateGameServersList(master_server)
+
+        self.thread = QThread()
+        self.worker = WGetActiveGameServers(master_server)
+        self.worker.moveToThread(self.thread)
+
+        self.thread.started.connect(self.worker.run)
+        self.thread.started.connect(lambda: self.refresh_btn.setEnabled(False))
+        self.thread.finished.connect(self.thread.deleteLater)
+
+        self.worker.finished.connect(self.thread.quit)
+        self.worker.finished.connect(self.worker.deleteLater)
+        self.worker.finished.connect(lambda: self.refresh_btn.setEnabled(True))
+
+        self.worker.result.connect(self.table.updateGameServersList)
+        self.thread.start()
+
