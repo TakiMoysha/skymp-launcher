@@ -12,7 +12,7 @@ def get_game_server_by_name(name: str):
     return None
 
 
-def get_details_by_server_name(name: str):
+def get_details_by_server_name(name: str) -> dict:
     game_server = get_game_server_by_name(name)
     if game_server == None: return
     # todo: download info

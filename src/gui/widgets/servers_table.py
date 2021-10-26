@@ -1,7 +1,6 @@
 from qt_core import *
 
 from .servers_table_style import style as servers_table_style
-from controllers.servers_table import get_active_game_servers
 
 class ServersTable(QTableView):
     def __init__(
@@ -22,8 +21,6 @@ class ServersTable(QTableView):
         self.setSelectionMode(QAbstractItemView.SingleSelection)
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.verticalHeader().hide()
-
-        self.game_server_changed = SignalInstance()
 
         self.serversTableModel = ServersTableModel(self)
 
@@ -55,13 +52,7 @@ class ServersTable(QTableView):
 
 
     def selectionChanged(self, selected: QItemSelection, deselected: QItemSelection) -> None:
-        # self.emit(SIGNAL(self.test_func(selected)))
         return super().selectionChanged(selected, deselected)
-
-
-    # def test_func(self, selected: QItemSelection):
-    #     print("test_func")
-
 
     def set_style(
         self,
@@ -90,9 +81,7 @@ class ServersTable(QTableView):
         )
         self.setStyleSheet(style)
 
-
-    def updateGameServersList(self, master_server):
-        game_servers_list = get_active_game_servers(master_server)
+    def updateGameServersList(self, game_servers_list):
         self.serversTableModel.updateData(game_servers_list)
 
 

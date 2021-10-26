@@ -56,16 +56,18 @@ class UiPageMain(object):
             server_desc = server_details.get('desc')
             server_mods = server_details.get('mods')
 
+        def startAnimationShowDetails():
+            maximum_width = 600
+            if (self.server_descriptions.maximumWidth() != maximum_width):
+                self.animation = QPropertyAnimation(self.server_descriptions, b"maximumWidth")
+                self.animation.setStartValue(0)
+                self.animation.setEndValue(maximum_width)
+                self.animation.setDuration(200)
+                self.animation.setEasingCurve(QEasingCurve.Linear)
+                self.animation.start()
+
         updateGameServerDetails(selected, deselected)
-        maximum_width = 600
-        print(self.server_descriptions.maximumWidth())
-        if (self.server_descriptions.maximumWidth() != maximum_width):
-            self.animation = QPropertyAnimation(self.server_descriptions, b"maximumWidth")
-            self.animation.setStartValue(0)
-            self.animation.setEndValue(maximum_width)
-            self.animation.setDuration(200)
-            self.animation.setEasingCurve(QEasingCurve.Linear)
-            self.animation.start()
+        startAnimationShowDetails()
 
 
 

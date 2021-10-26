@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import (
     QWidget,
 )
 
-# fix freez by wirker class
+# fix freez by worker class
 
 
 # Step 1: Create a worker class
@@ -23,7 +23,7 @@ class Worker(QObject):
     def run(self):
         """Long task"""
         for i in range(5):
-            time.sleep(1)
+            time.sleep(2)
             self.progress.emit(i + 1)
         self.finished.emit()
 
@@ -71,10 +71,11 @@ class Window(QMainWindow):
         # Step 4: Move worker to the thread
         self.worker.moveToThread(self.thread)
         # Step 5: Connect signals and slots
-        self.thread.started.connect(self.worker.run)
+        self.thread.started.connect(lambda: self.worker.run())
+        self.thread.finished.connect(self.thread.deleteLater)
+
         self.worker.finished.connect(self.thread.quit)
         self.worker.finished.connect(self.worker.deleteLater)
-        self.thread.finished.connect(self.thread.deleteLater)
         self.worker.progress.connect(self.reportProgress)
         # Step 6: Start the thread
         self.thread.start()
