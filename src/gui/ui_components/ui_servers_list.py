@@ -85,13 +85,13 @@ class UiServersList(object):
         self.worker = WGetActiveGameServers(master_server)
         self.worker.moveToThread(self.thread)
 
-        self.thread.started.connect(self.worker.run)
         self.thread.started.connect(lambda: self.refresh_btn.setEnabled(False))
+        self.thread.started.connect(self.worker.run)
         self.thread.finished.connect(self.thread.deleteLater)
 
+        self.worker.finished.connect(lambda: self.refresh_btn.setEnabled(True))
         self.worker.finished.connect(self.thread.quit)
         self.worker.finished.connect(self.worker.deleteLater)
-        self.worker.finished.connect(lambda: self.refresh_btn.setEnabled(True))
 
         self.worker.result.connect(self.table.updateGameServersList)
         self.thread.start()
