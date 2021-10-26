@@ -1,4 +1,5 @@
 import sys
+import logging
 import traceback
 
 from typing import Optional, Union
@@ -8,6 +9,8 @@ from qt_core import *
 from main_window import MainWindow
 from auth_window import AuthWindow
 from splash_screen import SplashScreen
+
+logging.basicConfig(format="%(message)s", level=logging.INFO)
 
 class DialogManager:
     _dialogs: dict[str, list] = {
