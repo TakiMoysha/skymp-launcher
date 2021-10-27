@@ -1,2 +1,0 @@
-class SecureString:
-    pass
