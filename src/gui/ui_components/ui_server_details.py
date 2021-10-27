@@ -58,17 +58,29 @@ class UiServerDetails(object):
         self.verticalLayout.addWidget(self.textBrowser)
 
         self.tabWidget.addTab(self.description, "")
+
         self.mods = QWidget()
         self.mods.setObjectName(u"mods")
-        self.horizontalLayout = QHBoxLayout(self.mods)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.modsTabHLayout = QHBoxLayout(self.mods)
+        self.modsTabHLayout.setObjectName(u"modsTabHLayout")
         self.server_mods_list = QListWidget(self.mods)
         self.server_mods_list.setObjectName(u"server_mods_list")
         self.server_mods_list.addItems(["asdf", "123"])
 
-        self.horizontalLayout.addWidget(self.server_mods_list)
+        self.modsTabHLayout.addWidget(self.server_mods_list)
+
+        self.dlls = QWidget()
+        self.dlls.setObjectName(u'dlls')
+        self.dllsTabHLayout = QHBoxLayout(self.dlls)
+        self.dllsTabHLayout.setObjectName(u"dllsTabHLayout")
+        self.server_dlls_list = QListWidget(self.dlls)
+        self.server_dlls_list.setObjectName(u"server_dlls_list")
+        self.server_dlls_list.addItems(["ui.dll", "client.dll"])
+
+        self.dllsTabHLayout.addWidget(self.server_dlls_list)
 
         self.tabWidget.addTab(self.mods, "")
+        self.tabWidget.addTab(self.dlls, "")
 
         self.gridLayout.addWidget(self.tabWidget, 2, 0, 1, 2)
 
@@ -104,6 +116,7 @@ class UiServerDetails(object):
         self.server_address.setText(QCoreApplication.translate("parent_page", u"ServerAddress", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.description), QCoreApplication.translate("parent_page", u"Details", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.mods), QCoreApplication.translate("parent_page", u"Mods", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.dlls), QCoreApplication.translate("parent_page", u"Dlls", None))
         self.play_button.setText(QCoreApplication.translate("parent_page", u"Play", None))
     # retranslateUi
 

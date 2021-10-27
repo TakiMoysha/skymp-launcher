@@ -17,10 +17,8 @@ class WGetActiveGameServers(QObject):
 
 
     def run(self):
-        # servers = get_active_game_servers(master_server)
         servers = get_active_game_servers(self.master_server)
         self.result.emit(servers)
-        # sleep(2)
         self.finished.emit()
 
 
