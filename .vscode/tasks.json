@@ -58,6 +58,33 @@
             ]
         },
         {
+            "label": "Nuitka Release Build ",
+            "type": "shell",
+            "command": "C:\\Users\\Moyses\\Envs\\pyqt_env\\Scripts\\nuitka",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "args": [
+                "--plugin-enable=pyside6",
+                "--windows-disable-console",
+                "--include-data-dir=src/resources=resources/",
+                "--windows-icon-from-ico=src/icon.ico",
+                "--output-dir=./dist",
+                "-o",
+                {
+                    "value": "./dist/SkyLauncher.exe",
+                    "quoting": "strong"
+                },
+                "--standalone",
+                "--onefile",
+                {
+                    "value": "./src/runner.py",
+                    "quoting": "strong"
+                },
+            ]
+        },
+        {
             "label": "Nuitka Debug Build",
             "type": "shell",
             "command": "C:\\Users\\Moyses\\Envs\\pyqt_env\\Scripts\\nuitka",
@@ -67,6 +94,7 @@
             },
             "args": [
                 "--plugin-enable=pyside6",
+                "--show-memory",
                 "--include-data-dir=src/resources=resources/",
                 "--windows-icon-from-ico=src/icon.ico",
                 "--output-dir=./dist",
