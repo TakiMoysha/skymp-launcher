@@ -1,6 +1,4 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
@@ -16,6 +14,11 @@
                 "--add-data",
                 {
                     "value": "./src/resources/;resources/",
+                    "quoting": "strong"
+                },
+                "--name",
+                {
+                    "value": "PLauncherDebug",
                     "quoting": "strong"
                 },
                 "--debug=all",
@@ -43,7 +46,7 @@
                 },
                 "--name",
                 {
-                    "value": "SkyMP Luncher",
+                    "value": "PLauncher",
                     "quoting": "strong"
                 },
                 "--icon",
@@ -60,7 +63,7 @@
         {
             "label": "Nuitka Release Build ",
             "type": "shell",
-            "command": "C:\\Users\\Moyses\\Envs\\pyqt_env\\Scripts\\nuitka",
+            "command": ".\\env\\Scripts\\nuitka",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -73,7 +76,7 @@
                 "--output-dir=./dist",
                 "-o",
                 {
-                    "value": "./dist/SkyLauncher.exe",
+                    "value": "./dist/NLauncher.exe",
                     "quoting": "strong"
                 },
                 "--standalone",
@@ -87,7 +90,7 @@
         {
             "label": "Nuitka Debug Build",
             "type": "shell",
-            "command": "C:\\Users\\Moyses\\Envs\\pyqt_env\\Scripts\\nuitka",
+            "command": ".\\env\\Scripts\\nuitka",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -100,7 +103,7 @@
                 "--output-dir=./dist",
                 "-o",
                 {
-                    "value": "./dist/nuitka_launcher.exe",
+                    "value": "./dist/NLauncherDebug.exe",
                     "quoting": "strong"
                 },
                 "--standalone",
