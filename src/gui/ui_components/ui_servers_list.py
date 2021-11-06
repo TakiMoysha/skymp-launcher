@@ -7,7 +7,7 @@ from gui.widgets.button_with_icon import ButtonWithIcon
 from .ui_servers_list_style import combo_box_style
 
 from controllers.theme_manager import ThemeManager, Colors
-from controllers.servers_table import WGetActiveGameServers, get_active_game_servers
+from controllers.servers_table import WGetActiveGameServers
 
 class UiServersList(object):
     def setupUi(self, parent_page):

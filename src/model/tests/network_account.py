@@ -1,9 +1,6 @@
-from asyncio.tasks import sleep
 import os
-import json
+
 import unittest
-import asyncio
-import grequests
 
 import model.network.auth_models as auth_models
 import model.network.account as account

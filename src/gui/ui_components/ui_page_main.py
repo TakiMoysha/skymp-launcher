@@ -3,7 +3,7 @@ from qt_core import *
 from gui.ui_components.ui_server_details import UiServerDetails
 from gui.ui_components.ui_servers_list import UiServersList
 
-from controllers.server_details import get_details_by_server_name
+from controllers.servers_table import get_details_by_server_index
 
 
 class UiPageMain(object):
@@ -49,12 +49,20 @@ class UiPageMain(object):
     def selectGameServer(self, selected: QItemSelection, deselected: QItemSelection):
         def updateGameServerDetails(selected: QItemSelection, deselected: QItemSelection):
             name_game_server = selected.indexes()[0].data()
-            server_details = get_details_by_server_name(name_game_server)
-            server_logo = server_details.get('logo')
-            server_name = server_details.get('name')
-            server_address = server_details.get('address')
-            server_desc = server_details.get('desc')
-            server_mods = server_details.get('mods')
+
+            server_details = get_details_by_server_index(selected.indexes()[0].row())
+            master_server = server_details.master_server
+            server_icon_url = server_details.icon_url
+            server_name = server_details.name_server
+            server_address = f'{server_details.ip_address}:{server_details.port}'
+            server_desc = server_details.desc
+            server_mods = server_details.mods
+            server_dlls = server_details.dlls
+
+            self.ui_server_descriptions.updateDetails(server_icon_url, server_name,
+                server_address, server_desc, server_mods, server_dlls
+            )
+
 
         def startAnimationShowDetails():
             maximum_width = 600
@@ -68,8 +76,6 @@ class UiPageMain(object):
 
         updateGameServerDetails(selected, deselected)
         startAnimationShowDetails()
-
-
 
     # def retranslateUi(self, application_pages):
     #     application_pages.setWindowTitle(

@@ -52,12 +52,15 @@ class UiServerDetails(object):
         self.description.setObjectName(u"description")
         self.verticalLayout = QVBoxLayout(self.description)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.textBrowser = QListView(self.description)
+        self.textBrowser = QTextBrowser(self.description)
         self.textBrowser.setObjectName(u"textBrowser")
+        self.description.setStyleSheet(f"""
+            QTextBrowser {{
+                background-color: blue;
+            }}
+        """)
 
         self.verticalLayout.addWidget(self.textBrowser)
-
-        self.tabWidget.addTab(self.description, "")
 
         self.mods = QWidget()
         self.mods.setObjectName(u"mods")
@@ -65,7 +68,6 @@ class UiServerDetails(object):
         self.modsTabHLayout.setObjectName(u"modsTabHLayout")
         self.server_mods_list = QListWidget(self.mods)
         self.server_mods_list.setObjectName(u"server_mods_list")
-        self.server_mods_list.addItems(["asdf", "123"])
 
         self.modsTabHLayout.addWidget(self.server_mods_list)
 
@@ -79,6 +81,7 @@ class UiServerDetails(object):
 
         self.dllsTabHLayout.addWidget(self.server_dlls_list)
 
+        self.tabWidget.addTab(self.description, "")
         self.tabWidget.addTab(self.mods, "")
         self.tabWidget.addTab(self.dlls, "")
 
@@ -138,3 +141,14 @@ class UiServerDetails(object):
 
     def _isUserAuth(self):
         return False
+
+    def updateDetails(self, icon_url, name, address, descriptions, mods, dlls):
+        # self.server_icon.setPixmap(pixmap)
+        # qpixmap = QPixmap(icon_url)
+        # QImage.loadFromData()
+        self.server_name.setText(name)
+        self.server_address.setText(address)
+        self.textBrowser.setText(descriptions)
+        self.server_mods_list.addItems(mods)
+        self.server_dlls_list.addItems(dlls)
+

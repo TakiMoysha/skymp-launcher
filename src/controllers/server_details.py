@@ -3,30 +3,6 @@ import subprocess
 
 from model.configs.consts import *
 
-from .servers_table import servers_list
-
-def get_game_server_by_name(name: str):
-    for server in servers_list:
-        if server.get("name") == name:
-            return server
-    return None
-
-
-def get_details_by_server_name(name: str) -> dict:
-    game_server = get_game_server_by_name(name)
-    if game_server == None: return
-    # todo: download info
-    print(game_server)
-    server_details = {
-        'logo': "",
-        'name': "",
-        'address': "",
-        'desc': "",
-        'mods': "",
-    }
-    return server_details
-
-
 def filesInstalled():
     return False
 
